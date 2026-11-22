@@ -93,7 +93,7 @@ EN_TO_ES: Dict[str, str] = {
     "─── Disconnecting & Releasing All Cloud GPU Runtimes ───": (
         "─── Desconectando y liberando todas las instancias GPU en la nube ───"
     ),
-    "# PowerShell (Recommended on Windows)": "# PowerShell (Recomendado en Windows)",
+    "# PowerShell (Recommended on Windows)": "# PowerShell (recomendado en Windows)",
     # Top header & left sidebar controls
     "Dark": "Oscuro",
     "Light": "Claro",
@@ -107,9 +107,9 @@ EN_TO_ES: Dict[str, str] = {
     "Not bound": "Sin vincular",
     "Connected": "Conectada",
     "Bind": "Vincular",
-    "Refresh": "Recargar",
+    "Refresh": "Actualizar",
     "Account": "Cuenta",
-    "Switch Google Account...": "Cambiar cuenta Google...",
+    "Switch Google Account...": "Cambiar cuenta de Google...",
     "Sign Out": "Cerrar sesión",
     "Paste OAuth code from browser": "Pega el código OAuth del navegador",
     "Submit": "Enviar",
@@ -136,7 +136,7 @@ EN_TO_ES: Dict[str, str] = {
     ),
     "GPU VRAM": "VRAM de GPU",
     "System RAM": "RAM del sistema",
-    "Runtime Disk": "Disco de instancia",
+    "Runtime Disk": "Disco de la instancia",
     # Card 2: CU & Idle Sleep
     "Compute Units & Auto-Sleep": "Créditos CU y reposo automático",
     "CU Balance": "Saldo CU",
@@ -168,11 +168,11 @@ EN_TO_ES: Dict[str, str] = {
     "Disk Weights": "Pesos en disco",
     "View Weight Shards (0)": "Ver fragmentos (0)",
     "Optional (for gated HF repos)": "Opcional (repos HF restringidos)",
-    "1-Click Wake": "Activar 1 clic",
+    "1-Click Wake": "Activar en 1 clic",
     "Reconnect": "Reconectar",
     "Download": "Descargar",
     "Verify": "Verificar",
-    "Load to VRAM": "Cargar VRAM",
+    "Load to VRAM": "Cargar en VRAM",
     "Reload VRAM": "Recargar VRAM",
     "Unload": "Quitar",
     "Unload All": "Quitar todo",
@@ -186,7 +186,7 @@ EN_TO_ES: Dict[str, str] = {
     "Stop": "Detener",
     # Card 4: Adaptive Params
     "Resolution & Sampling": "Resolución y muestreo",
-    "Video Resolution": "Resolución de vídeo",
+    "Video Resolution": "Resolución de video",
     "Total Frames (4-15s)": "Fotogramas totales (4-15s)",
     "Sampling Steps": "Pasos de muestreo",
     "Aspect Ratio & Size": "Relación de aspecto y tamaño",
@@ -199,7 +199,7 @@ EN_TO_ES: Dict[str, str] = {
     "High": "Alto",
     "XHigh": "Máx",
     "Context Window (up to 256K)": "Ventana de contexto (hasta 256K)",
-    "Max Output Tokens (incl. CoT)": "Tokens máx. salida (incl. CoT)",
+    "Max Output Tokens (incl. CoT)": "Tokens máx. de salida (incl. CoT)",
     "Temperature": "Temperatura",
     "ComfyUI Persistence & Control": "Persistencia y control de ComfyUI",
     "Storage: Google Drive Auto-Symlink Persistence": (
@@ -209,7 +209,7 @@ EN_TO_ES: Dict[str, str] = {
     "Canvas Queue: 0 running · 0 queued": "Cola del lienzo: 0 en curso · 0 en espera",
     "Free co-resident models VRAM before start": "Liberar VRAM de otros modelos antes de iniciar",
     "Sync Drive Now": "Sincronizar Drive",
-    "Free VRAM Cache": "Limpiar VRAM",
+    "Free VRAM Cache": "Liberar VRAM",
     "Seed": "Seed",
     "Random": "Aleatoria",
     "Batch Count": "Cantidad por lote",
@@ -229,8 +229,8 @@ EN_TO_ES: Dict[str, str] = {
         "EasyColab — Estudio multimodal en la nube de alta VRAM"
     ),
     "Open Multi-Model Cloud AI Studio": "Estudio multimodal abierto en la nube",
-    "Presets": "Ejemplos",
-    "Output Folder": "Carpeta salida",
+    "Presets": "Plantillas",
+    "Output Folder": "Carpeta de salida",
     "User Guide": "Guía de uso",
     "Logs": "Registros",
     "Collapse / expand right live run log panel": "Mostrar u ocultar el panel derecho de registros",
@@ -242,11 +242,11 @@ EN_TO_ES: Dict[str, str] = {
     "Upload a start frame and/or end frame (at least 1) for precise composition & camera transition": (
         "Sube un fotograma inicial o final (al menos 1) para controlar composición y transición"
     ),
-    "Start Frame (Index 0)": "Fotograma inicial (Índice 0)",
+    "Start Frame (Index 0)": "Fotograma inicial (índice 0)",
     "Drop or click to select start frame": "Arrastra o pulsa para elegir fotograma inicial",
-    "End Frame (Optional · Index -1)": "Fotograma final (Opcional · Índice -1)",
+    "End Frame (Optional · Index -1)": "Fotograma final (opcional · índice -1)",
     "Drop or click to select end frame": "Arrastra o pulsa para elegir fotograma final",
-    "Camera & Multimodal Audio-Video Prompt": "Prompt de cámara y audio-vídeo multimodal",
+    "Camera & Multimodal Audio-Video Prompt": "Prompt de cámara y audio-video multimodal",
     "Describe visual subjects, camera motion, and lighting, plus synced soundscape/dialogue & background score": (
         "Describe sujetos, movimiento de cámara e iluminación, además de efectos, diálogos y música"
     ),
@@ -254,16 +254,16 @@ EN_TO_ES: Dict[str, str] = {
     "Describe subject, framing, camera movement, and lighting...": (
         "Describe sujeto, encuadre, movimiento de cámara e iluminación..."
     ),
-    "Soundscape & Dialogue (Optional)": "Ambiente sonoro y diálogos (Opcional)",
+    "Soundscape & Dialogue (Optional)": "Ambiente sonoro y diálogos (opcional)",
     "e.g. Rhythmic train clatter over steel tracks, rustling leaves, soft spoken dialogue...": (
         "Ej.: traqueteo rítmico del tren sobre vías, hojas al viento, diálogo suave..."
     ),
-    "Background Music Style (Optional)": "Estilo de música de fondo (Opcional)",
+    "Background Music Style (Optional)": "Estilo de música de fondo (opcional)",
     "e.g. Gentle nostalgic solo piano with warm acoustic guitar and ambient strings...": (
         "Ej.: piano solista suave y nostálgico con guitarra acústica y cuerdas..."
     ),
     "Generate": "Generar",
-    "Generate Audio-Video (Ctrl+Enter)": "Generar audio-vídeo (Ctrl+Enter)",
+    "Generate Audio-Video (Ctrl+Enter)": "Generar audio-video (Ctrl+Enter)",
     "Generate Image (Ctrl+Enter)": "Generar imagen (Ctrl+Enter)",
     "Send & Start Deep Reasoning (Ctrl+Enter)": "Enviar e iniciar razonamiento (Ctrl+Enter)",
     # Studio B: ComfyUI
@@ -297,7 +297,7 @@ EN_TO_ES: Dict[str, str] = {
         "3. Sube 1 o 2 imágenes y pulsa 'Run' para generar"
     ),
     "1-Click Install Models & Workflows": "Instalar modelos y flujos",
-    "Open in Canvas": "Abrir en lienzo",
+    "Open in Canvas": "Abrir en el lienzo",
     "Rewrite Templates": "Reescribir plantillas",
     "Google Drive Auto-Symlink & Cross-Runtime Persistence": (
         "Enlace automático a Google Drive y persistencia entre sesiones"
@@ -306,11 +306,11 @@ EN_TO_ES: Dict[str, str] = {
     "Cloud path: /content/drive/MyDrive/EasyColab_ComfyUI (auto-reused across fresh GPU runtimes)": (
         "Ruta en la nube: /content/drive/MyDrive/EasyColab_ComfyUI (se reutiliza entre instancias)"
     ),
-    "models/* Weight Library": "models/* Biblioteca de pesos",
+    "models/* Weight Library": "models/* · biblioteca de pesos",
     "0 files": "0 archivos",
-    "custom_nodes Extensions": "custom_nodes Extensiones",
+    "custom_nodes Extensions": "custom_nodes · extensiones",
     "0 nodes": "0 nodos",
-    "workflows Saved Templates": "workflows Plantillas guardadas",
+    "workflows Saved Templates": "workflows · plantillas guardadas",
     "0 templates": "0 plantillas",
     "8-Thread High-Speed Weight Downloader to ComfyUI Drive": (
         "Descargador rápido de pesos en 8 hilos para ComfyUI Drive"
@@ -318,9 +318,9 @@ EN_TO_ES: Dict[str, str] = {
     "Paste a direct Hugging Face / Civitai URL, or enter an HF Repo ID + filename to pull directly into ComfyUI": (
         "Pega una URL directa de HuggingFace / Civitai o un Repo ID + archivo para bajarlo a ComfyUI"
     ),
-    "Target Folder": "Carpeta destino",
+    "Target Folder": "Carpeta de destino",
     "Direct URL https://... or HF Repo ID e.g. Kijai/WanVideo_comfy": (
-        "URL directa https://... o Repo ID HF ej. Kijai/WanVideo_comfy"
+        "URL directa https://... o Repo ID de HF, ej. Kijai/WanVideo_comfy"
     ),
     "Optional: subpath in repo or target filename (e.g. Wan2_2-I2V-14B.safetensors)": (
         "Opcional: subruta del repo o nombre final (ej. Wan2_2-I2V-14B.safetensors)"
@@ -335,7 +335,7 @@ EN_TO_ES: Dict[str, str] = {
     ),
     "Input Image 1": "Imagen de entrada 1",
     "Drop or click to select image": "Arrastra o pulsa para elegir imagen",
-    "Comparison Image 2 (Optional)": "Imagen comparativa 2 (Opcional)",
+    "Comparison Image 2 (Optional)": "Imagen comparativa 2 (opcional)",
     "Drop or click to select second image": "Arrastra o pulsa para elegir segunda imagen",
     "Prompt & Instruction Input": "Entrada de prompt e instrucciones",
     "Supports up to 256K context, deep chain-of-thought reasoning, architecture design & storyboards (Ctrl+Enter)": (
@@ -377,8 +377,8 @@ EN_TO_ES: Dict[str, str] = {
     "Compatible with OpenAI SDK, Cursor, Cherry Studio, Chatbox & standard tools": (
         "Compatible con OpenAI SDK, Cursor, Cherry Studio, Chatbox y herramientas estándar"
     ),
-    "Chat URL": "URL Chat",
-    "Model ID": "ID Modelo",
+    "Chat URL": "URL de chat",
+    "Model ID": "ID de modelo",
     "Supports SSE streaming, reasoning_content CoT, image_url vision inputs & Function Calling; also serves /v1/images/generations when an image model is loaded.": (
         "Soporta streaming SSE, reasoning_content CoT, visión con image_url y Function Calling; también expone /v1/images/generations al cargar un modelo de imagen."
     ),
@@ -416,9 +416,9 @@ EN_TO_ES: Dict[str, str] = {
     "Upload source image(s) and enter natural-language edit instructions (Qwen-Image-2.1 supports dual-image fusion)": (
         "Sube las imágenes fuente y escribe instrucciones en lenguaje natural (Qwen-Image-2.1 admite fusión doble)"
     ),
-    "Primary Reference 1 (Required)": "Referencia principal 1 (Obligatoria)",
+    "Primary Reference 1 (Required)": "Referencia principal 1 (obligatoria)",
     "Drop or click to upload primary image": "Arrastra o pulsa para subir imagen principal",
-    "Fusion Reference 2 (Optional)": "Referencia fusión 2 (Opcional)",
+    "Fusion Reference 2 (Optional)": "Referencia de fusión 2 (opcional)",
     "Drop or click to upload second fusion image": "Arrastra o pulsa para subir segunda imagen",
     "Image & Typography Generation Prompt": "Prompt de generación de imagen y tipografía",
     "Supports complex scene composition, commercial photography & accurate Chinese/English poster typography": (
@@ -429,7 +429,7 @@ EN_TO_ES: Dict[str, str] = {
         "Describe sujeto, iluminación, lente o texto entre comillas para el cartel..."
     ),
     "Negative Prompt (Optional — exclude artifacts or unwanted elements)": (
-        "Prompt negativo (Opcional — excluye artefactos o elementos no deseados)"
+        "Prompt negativo (opcional — excluye artefactos o elementos no deseados)"
     ),
     "e.g. blurry, low quality, watermark, deformed hands...": (
         "Ej.: blurry, low quality, watermark, deformed hands..."
@@ -438,14 +438,14 @@ EN_TO_ES: Dict[str, str] = {
     "Local Media Library": "Biblioteca local",
     "Auto-saved to Videos/EasyColab": "Guardado automático en Videos/EasyColab",
     "No local outputs yet": "Aún no hay archivos locales",
-    "ComfyUI Cloud Outputs": "Salidas ComfyUI en la nube",
+    "ComfyUI Cloud Outputs": "Salidas de ComfyUI en la nube",
     "1-click pull to local library & preview": "Descarga en 1 clic a tu PC y vista previa",
     "Output Preview Stage": "Vista previa de salida",
     "Generated audio-videos & HD images are automatically saved and played here\nSupports real-time 24 FPS video + 32 kHz stereo audio preview": (
-        "Los vídeos con audio e imágenes HD generados se guardan y reproducen aquí\nSoporta vista previa en tiempo real de vídeo a 24 FPS y audio estéreo de 32 kHz"
+        "Los videos con audio e imágenes HD generados se guardan y reproducen aquí\nSoporta vista previa en tiempo real de video a 24 FPS y audio estéreo de 32 kHz"
     ),
     "QtMultimedia is unavailable here. Click 'Replay / Open' below to play in default media player.": (
-        "QtMultimedia no está disponible aquí. Pulsa 'Repetir / Abrir' para reproducir con tu app predeterminada."
+        "QtMultimedia no está disponible aquí. Pulsa 'Reproducir / Abrir' para reproducir con tu app predeterminada."
     ),
     "Drag & drop or click to select image": "Arrastra y suelta o pulsa para elegir imagen",
     "Image Files (*.png *.jpg *.jpeg *.webp *.bmp)": "Imágenes (*.png *.jpg *.jpeg *.webp *.bmp)",
@@ -454,12 +454,12 @@ EN_TO_ES: Dict[str, str] = {
     "Mute": "Mute",
     "Muted": "Mudo",
     "No local media selected": "Sin archivo local seleccionado",
-    "Replay / Open": "Repetir / Abrir",
+    "Replay / Open": "Reproducir / Abrir",
     "Replay": "Repetir",
-    "Open in Viewer": "Abrir en visor",
+    "Open in Viewer": "Abrir en el visor",
     "Show in Finder": "Ver en Finder",
-    "Show in Explorer": "Ver en Explorador",
-    "Show in File Manager": "Ver en archivos",
+    "Show in Explorer": "Ver en el Explorador",
+    "Show in File Manager": "Ver en el gestor de archivos",
     # Custom HuggingFace Repo Dialog
     "Add Custom HuggingFace Repository": "Añadir repositorio de HuggingFace",
     "Pick from live HuggingFace trending models below or enter any Repo ID. For gated/private repos, enter your HF Token and accept the license on HuggingFace.": (
@@ -471,7 +471,7 @@ EN_TO_ES: Dict[str, str] = {
     "Trending All": "Tendencias",
     "GGUF": "GGUF",
     "LLM / VLM": "LLM / VLM",
-    "Image / Video": "Imagen / Vídeo",
+    "Image / Video": "Imagen / video",
     "Search HuggingFace models (e.g. Qwen3 GGUF / DeepSeek 9B), press Enter...": (
         "Busca modelos de HuggingFace (ej. Qwen3 GGUF / DeepSeek 9B) y pulsa Enter..."
     ),
@@ -479,7 +479,7 @@ EN_TO_ES: Dict[str, str] = {
     "1. HuggingFace Repo ID or URL": "1. Repo ID o URL de HuggingFace",
     "Inspect Model Details & Shards": "Ver detalles y fragmentos",
     "Click a trending card above or enter any Owner/Repo": (
-        "Pulsa una tarjeta superior o escribe cualquier Usuario/Repo"
+        "Pulsa una tarjeta superior o escribe cualquier usuario/repo"
     ),
     "2. Filename / Wildcard Filter (Include Pattern, Optional)": (
         "2. Filtro de archivo o comodín (Include Pattern, opcional)"
@@ -487,15 +487,15 @@ EN_TO_ES: Dict[str, str] = {
     "Blank = auto-select; or *Q4_K_M*.gguf, *IQ2_XS*.gguf, *.safetensors": (
         "Vacío = autoselección; o *Q4_K_M*.gguf, *IQ2_XS*.gguf, *.safetensors"
     ),
-    "3. Display Name (Optional)": "3. Nombre visible (Opcional)",
+    "3. Display Name (Optional)": "3. Nombre visible (opcional)",
     "Blank = repo short name": "Vacío = nombre corto del repo",
     "4. Task Modality": "4. Modalidad de tarea",
     "Auto-detect": "Autodetectar",
-    "Chat / Vision / API": "Chat / Visión / API",
+    "Chat / Vision / API": "Chat / visión / API",
     "Image Generation": "Generación de imagen",
-    "Video + Audio": "Vídeo + Audio",
+    "Video + Audio": "Video + audio",
     "5. HuggingFace Token (Required for Gated/Private Repos)": (
-        "5. HuggingFace Token (Obligatorio en repos privados o restringidos)"
+        "5. HuggingFace Token (obligatorio en repos privados o restringidos)"
     ),
     "Get HF Token": "Obtener HF Token",
     "Open Repo & Accept License": "Abrir repo y aceptar licencia",
@@ -509,15 +509,15 @@ EN_TO_ES: Dict[str, str] = {
     ),
     "N/A": "N/D",
     "Params": "Parámetros",
-    "Arch/Context": "Arq./Contexto",
-    "Repo Size": "Tamaño repo",
+    "Arch/Context": "Arq. / contexto",
+    "Repo Size": "Tamaño del repo",
     "No top-level .gguf/.safetensors shards listed.": (
         "No hay fragmentos .gguf/.safetensors en el nivel superior."
     ),
     "Select File": "Elegir archivo",
     "No README excerpt available.": "Sin resumen de README disponible.",
     "No models found; try another keyword, click Refresh, or enter Repo ID below": (
-        "Sin resultados; prueba otra palabra, pulsa Recargar o escribe el Repo ID abajo"
+        "Sin resultados; prueba otra palabra, pulsa Actualizar o escribe el Repo ID abajo"
     ),
     "Details": "Info",
     "View model parameters, shards & README details": (
@@ -526,30 +526,30 @@ EN_TO_ES: Dict[str, str] = {
     "Fetching models, parameter counts & Colab VRAM fit from HuggingFace Hub...": (
         "Obteniendo modelos, parámetros y ajuste de VRAM desde HuggingFace Hub..."
     ),
-    "Add to Model Center": "Añadir al centro",
+    "Add to Model Center": "Añadir al centro de modelos",
     "Add & Download Weights Now": "Añadir y descargar pesos",
     "Remove Custom Model": "Eliminar modelo personalizado",
     # Onboarding Dialog
     "EasyColab Quick Start Guide": "Guía rápida de EasyColab",
-    "EasyColab Guide": "Guía EasyColab",
+    "EasyColab Guide": "Guía de EasyColab",
     "3-minute beginner walkthrough": "Inicio guiado en 3 minutos",
-    "Connect 96GB Cloud GPU": "Conectar GPU 96GB",
+    "Connect 96GB Cloud GPU": "Conectar GPU de 96GB",
     "Wake a G4 runtime headless in 1 click, or run the notebook in browser": (
         "Activa una instancia G4 en 1 clic sin navegador o ejecuta el notebook"
     ),
     "Tip: After binding your Google account once, just click 'Wake & Deploy' next time.": (
-        "Consejo: tras vincular tu cuenta Google una vez, la próxima pulsa 'Activar GPU'."
+        "Consejo: tras vincular tu cuenta de Google una vez, la próxima pulsa 'Activar GPU'."
     ),
     "Download & Load Models": "Descargar y cargar",
     "Google Drive weight persistence + G4 176GB RAM hot-cache & multi-model co-residency": (
         "Pesos persistentes en Google Drive + caché RAM de 176GB en G4 y multimodelo"
     ),
     "Tip: Co-reside Qwen3.8 LLM gateway alongside image/video models in VRAM with zero switching.": (
-        "Consejo: mantén la pasarela Qwen3.8 en VRAM junto con modelos de imagen/vídeo."
+        "Consejo: mantén la pasarela Qwen3.8 en VRAM junto con modelos de imagen/video."
     ),
     "Explore 4 Studio Modes": "Los 4 modos",
     "Audio-video generation, ComfyUI guided workflows, 100 tok/s LLM gateway & 2K image editing": (
-        "Audio-vídeo, flujos guiados en ComfyUI, pasarela LLM a 100 tok/s y edición 2K"
+        "Audio-video, flujos guiados en ComfyUI, pasarela LLM a 100 tok/s y edición 2K"
     ),
     "Tip: Click any card button above to jump directly to that studio workspace.": (
         "Consejo: pulsa cualquier botón superior para ir directo a ese estudio."
@@ -562,17 +562,17 @@ EN_TO_ES: Dict[str, str] = {
         "Consejo: pulsa 'Liberar instancias' abajo a la izquierda al acabar para cortar el gasto CU."
     ),
     "Environment Status": "Estado del entorno",
-    "Google Account: Not bound": "Cuenta Google: sin vincular",
-    "Cloud GPU: Not connected": "GPU nube: sin conectar",
+    "Google Account: Not bound": "Cuenta de Google: sin vincular",
+    "Cloud GPU: Not connected": "GPU en la nube: sin conectar",
     "Previous": "Anterior",
     "Next": "Siguiente",
     "Start Creating": "Empezar a crear",
-    "1. Bind Google Account (One-time setup)": "1. Vincula tu cuenta Google (solo la primera vez)",
+    "1. Bind Google Account (One-time setup)": "1. Vincula tu cuenta de Google (solo la primera vez)",
     "Click 'Bind' in the left sidebar to complete official OAuth login. Credentials stay locally in ~/.config/colab-cli/token.json and sync live CU balance.": (
         "Pulsa 'Vincular' en la barra izquierda para iniciar sesión con OAuth oficial. Tus credenciales se guardan en ~/.config/colab-cli/token.json y sincronizan tu saldo CU."
     ),
-    "Bind Google Account Now": "Vincular cuenta Google",
-    "Google account connected": "Cuenta Google conectada",
+    "Bind Google Account Now": "Vincular cuenta de Google",
+    "Google account connected": "Cuenta de Google conectada",
     "2. Select G4 & Click 'Wake & Deploy' (Headless)": "2. Elige G4 y pulsa 'Activar GPU' (sin navegador)",
     "Automatically allocates an NVIDIA RTX PRO 6000 Blackwell (96GB VRAM + 176GB RAM), deploys the multi-model server, and connects via encrypted tunnel without opening a browser.": (
         "Asigna automáticamente una NVIDIA RTX PRO 6000 Blackwell (96GB VRAM + 176GB RAM), despliega el servidor multimodelo y conecta por túnel cifrado sin abrir navegador."
@@ -585,7 +585,7 @@ EN_TO_ES: Dict[str, str] = {
         "Si usas el plan gratuito de Colab o prefieres el navegador, sube EasyColab_Server.ipynb, ejecútalo y pega la URL https://xxxx.gradio.live en la barra izquierda."
     ),
     "Export / Reveal .ipynb Notebook": "Exportar / Mostrar .ipynb",
-    "Open Google Colab Web": "Abrir Google Colab Web",
+    "Open Google Colab Web": "Abrir Google Colab en la web",
     "1. Click 'Download Weights': Persist Once in Google Drive": (
         "1. Pulsa 'Descargar': guarda una vez en Google Drive"
     ),
@@ -593,36 +593,36 @@ EN_TO_ES: Dict[str, str] = {
         "Descargador integrado de 8 hilos. Con Google Drive autorizado, pesos y nodos ComfyUI se conservan entre sesiones para reutilizarlos al instante."
     ),
     "2. Click 'Load to VRAM': 96GB VRAM + 176GB RAM Hot Cache": (
-        "2. Pulsa 'Cargar VRAM': 96GB VRAM + caché rápida en 176GB RAM"
+        "2. Pulsa 'Cargar en VRAM': 96GB VRAM + caché rápida en 176GB RAM"
     ),
     "G4 runtimes support multi-model VRAM co-residency (e.g. Qwen3.8 API gateway + image/video models), with 176GB DDR5 RAM hot-caching for MiniMax-H3.": (
-        "Las instancias G4 permiten varios modelos residentes a la vez en VRAM (ej. pasarela Qwen3.8 + imagen/vídeo), con caché en 176GB DDR5 para MiniMax-H3."
+        "Las instancias G4 permiten varios modelos residentes a la vez en VRAM (ej. pasarela Qwen3.8 + imagen/video), con caché en 176GB DDR5 para MiniMax-H3."
     ),
     "3. Live Telemetry Splines & Real-Time Run Logs": "3. Gráficos de telemetría y registros en tiempo real",
     "Left sidebar plots smooth GPU VRAM / System RAM / Disk curves (combined or split view with hover tooltips) while the right terminal streams live cloud logs.": (
         "La barra izquierda grafica VRAM, RAM y disco en tiempo real mientras el panel derecho muestra los registros en vivo de la nube."
     ),
     "MiniMax-H3 · 4–15s Cinematic Native Audio-Video": (
-        "MiniMax-H3 · Audio-vídeo cinematográfico nativo de 4–15s"
+        "MiniMax-H3 · Audio-video cinematográfico nativo de 4–15s"
     ),
     "Generates 24 FPS HD video synced with 32 kHz stereo ambient SFX, dialogue & music, supporting Text-to-Video+Audio and First/Last-Frame transitions.": (
-        "Genera vídeo HD a 24 FPS con sonido ambiente estéreo a 32 kHz, diálogos y música, admitiendo texto a vídeo+audio y transición por fotogramas clave."
+        "Genera video HD a 24 FPS con sonido ambiente estéreo a 32 kHz, diálogos y música, admitiendo texto a video + audio y transición por fotogramas clave."
     ),
-    "Switch to MiniMax-H3 Video Studio": "Ir al estudio de vídeo MiniMax-H3",
+    "Switch to MiniMax-H3 Video Studio": "Ir al estudio de video MiniMax-H3",
     "ComfyUI Node Studio · 4 Guided Ready-to-Run Workflow Packs": (
         "Estudio de nodos ComfyUI · 4 paquetes listos para usar"
     ),
     "Built-in Wan2.2, MiniMax-H3 Turbo, LTX-2.3 & HunyuanVideo 1.5 workflow packs — install weights in 1 click and create in fullscreen browser canvas.": (
         "Paquetes integrados Wan2.2, MiniMax-H3 Turbo, LTX-2.3 y HunyuanVideo 1.5: instala pesos en 1 clic y crea en el lienzo del navegador."
     ),
-    "Switch to ComfyUI Node Studio": "Ir al estudio ComfyUI",
+    "Switch to ComfyUI Node Studio": "Ir al estudio de ComfyUI",
     "Qwen3.8-27B (GGUF 100 tok/s) · Vision Chat & Claude/OpenAI Gateway": (
         "Qwen3.8-27B (GGUF 100 tok/s) · Chat visual y pasarela Claude/OpenAI"
     ),
     "Up to 256K context, deep chain-of-thought & vision prompt analysis, plus dual OpenAI (/v1) & Anthropic (/v1/messages) public API endpoints.": (
         "Hasta 256K de contexto, razonamiento profundo, análisis visual de prompts y endpoints públicos OpenAI (/v1) y Anthropic (/v1/messages)."
     ),
-    "Switch to Qwen3.8-GGUF Chat & Gateway": "Ir a Qwen3.8-GGUF Chat y API",
+    "Switch to Qwen3.8-GGUF Chat & Gateway": "Ir al chat y API de Qwen3.8-GGUF",
     "Qwen-Image-2.1 / Z-Image-Turbo · 2K Posters & Instruction Editing": (
         "Qwen-Image-2.1 / Z-Image-Turbo · Carteles 2K y edición por instrucciones"
     ),
@@ -645,7 +645,7 @@ EN_TO_ES: Dict[str, str] = {
     ),
     # ViewModel & ViewModelServices status / errors
     "Ready: Bind your Google account and wake a G4 runtime, or paste an existing tunnel URL.": (
-        "Listo: vincula tu cuenta Google y activa una instancia G4, o pega la URL de un túnel."
+        "Listo: vincula tu cuenta de Google y activa una instancia G4, o pega la URL de un túnel."
     ),
     "Please enter a https://xxxx.gradio.live server URL or click 'Wake & Deploy'.": (
         "Introduce una URL https://xxxx.gradio.live o pulsa 'Activar GPU'."
@@ -704,7 +704,7 @@ EN_TO_ES: Dict[str, str] = {
         "Generando enlace de autorización Google OAuth..."
     ),
     "Select the Google account in your browser and paste the authorization code below.": (
-        "Elige la cuenta Google en tu navegador y pega abajo el código de autorización."
+        "Elige la cuenta de Google en tu navegador y pega abajo el código de autorización."
     ),
     "Opened Google sign-in in browser. Authorize and paste the code below.": (
         "Se abrió el acceso de Google en tu navegador. Autoriza y pega el código abajo."
@@ -717,12 +717,12 @@ EN_TO_ES: Dict[str, str] = {
         "Verificando código de autorización y sincronizando cuenta de Google Colab..."
     ),
     "Switched Google account. Click 'Wake & Deploy' to launch a new runtime.": (
-        "Cuenta Google cambiada. Pulsa 'Activar GPU' para iniciar una nueva instancia."
+        "Cuenta de Google cambiada. Pulsa 'Activar GPU' para iniciar una nueva instancia."
     ),
     "Invalid or expired authorization code": "Código de autorización inválido o caducado",
     "Signed out of Google account.": "Sesión de Google cerrada.",
     "Please click 'Bind' to sign in with your Google account first.": (
-        "Pulsa primero 'Vincular' para iniciar sesión con tu cuenta Google."
+        "Pulsa primero 'Vincular' para iniciar sesión con tu cuenta de Google."
     ),
     "Syncing Google Drive & terminating all active Colab GPU runtimes...": (
         "Sincronizando Google Drive y cerrando todas las instancias GPU activas..."
@@ -752,18 +752,18 @@ EN_TO_ES: Dict[str, str] = {
     # Models catalog, resolutions, ComfyUI preset packs, shard descriptions & HF sizing
     "Native BF16 · 134 GB": "BF16 nativo · 134 GB",
     "Full-modality native BF16 generation of HD video with synced 32kHz stereo SFX, dialogue & music": (
-        "Generación BF16 nativa multimodal de vídeo HD con efectos estéreo 32kHz, diálogos y música"
+        "Generación BF16 nativa multimodal de video HD con efectos estéreo 32kHz, diálogos y música"
     ),
-    "Text to Video+Audio": "Texto a Vídeo+Audio",
+    "Text to Video+Audio": "Texto a video + audio",
     "Describe visuals and sound to generate video with synced stereo audio": (
-        "Describe escena y sonido para generar vídeo con audio estéreo sincronizado"
+        "Describe escena y sonido para generar video con audio estéreo sincronizado"
     ),
-    "First/Last Frame to Video": "Fotograma inicial/final a vídeo",
+    "First/Last Frame to Video": "Fotograma inicial/final a video",
     "Upload start/end reference frames for precise composition & camera transitions": (
         "Sube fotogramas de inicio/fin para controlar con precisión la composición y cámara"
     ),
     "ComfyUI Node Studio": "Estudio de nodos ComfyUI",
-    "Node Workflows · Drive Symlink": "Flujos por nodos · Enlace Drive",
+    "Node Workflows · Drive Symlink": "Flujos por nodos · enlace a Drive",
     "One-click cloud ComfyUI + Manager fullscreen node canvas with auto Google Drive symlink persistence for nodes, models & workflows": (
         "Lienzo ComfyUI + Manager en la nube en 1 clic con persistencia automática en Google Drive para nodos, modelos y flujos"
     ),
@@ -771,7 +771,7 @@ EN_TO_ES: Dict[str, str] = {
     "Deploy & open fullscreen node canvas in browser with G4 keepalive, telemetry & auto-sleep": (
         "Despliega y abre el lienzo en navegador con keepalive G4, telemetría y reposo automático"
     ),
-    "Fast Weight DL & Output Pull": "Descarga rápida y bajar salidas",
+    "Fast Weight DL & Output Pull": "Descarga rápida y sincronización de salidas",
     "8-thread high-speed model download to Drive and 1-click output media sync to local PC": (
         "Descarga de modelos en 8 hilos a Drive y sincronización de salidas a tu PC en 1 clic"
     ),
@@ -785,7 +785,7 @@ EN_TO_ES: Dict[str, str] = {
     ),
     "Vision Understanding": "Comprensión visual",
     "Drop images for scene analysis, OCR, or reverse-engineering image/video prompts": (
-        "Suelta imágenes para analizar escenas, OCR o deducir prompts de imagen y vídeo"
+        "Suelta imágenes para analizar escenas, OCR o deducir prompts de imagen y video"
     ),
     "API Protocol Gateway": "Pasarela de protocolo API",
     "Dual-protocol public gateway supporting OpenAI (/v1) & Anthropic (/v1/messages)": (
@@ -814,11 +814,11 @@ EN_TO_ES: Dict[str, str] = {
     "Upload 1-2 reference images to edit regions, swap backgrounds, or fuse subjects via natural language": (
         "Sube 1 o 2 imágenes para editar zonas, cambiar fondos o fusionar sujetos con lenguaje natural"
     ),
-    "8-Step Turbo T2I · 30.6 GB": "T2I Turbo 8 pasos · 30.6 GB",
+    "8-Step Turbo T2I · 30.6 GB": "T2I turbo 8 pasos · 30.6 GB",
     "Popular 8-step distilled photorealistic & bilingual poster image generation model": (
         "Modelo popular destilado de 8 pasos para fotografía realista y carteles con texto"
     ),
-    "8-Step Turbo T2I": "Texto a imagen Turbo 8 pasos",
+    "8-Step Turbo T2I": "Texto a imagen turbo en 8 pasos",
     "Commercial-grade portraits & bilingual poster typography in just 8 sampling steps": (
         "Retratos comerciales y tipografía en carteles en solo 8 pasos de muestreo"
     ),
@@ -840,15 +840,15 @@ EN_TO_ES: Dict[str, str] = {
         "Pasarela pública dual compatible con OpenAI (/v1) y Anthropic (/v1/messages)"
     ),
     # Video & Image resolutions
-    "832 × 480 (16:9 Landscape · Recommended)": "832 × 480 (16:9 Horizontal · Recomendado)",
-    "480 × 832 (9:16 Vertical Short)": "480 × 832 (9:16 Vertical corto)",
+    "832 × 480 (16:9 Landscape · Recommended)": "832 × 480 (16:9 horizontal · recomendado)",
+    "480 × 832 (9:16 Vertical Short)": "480 × 832 (9:16 vertical corto)",
     "1280 × 720 (16:9 720P HD)": "1280 × 720 (16:9 720P HD)",
-    "720 × 1280 (9:16 720P Vertical)": "720 × 1280 (9:16 720P Vertical)",
-    "640 × 640 (1:1 Square)": "640 × 640 (1:1 Cuadrado)",
-    "1024 × 1024 (1:1 Square HD · Recommended)": "1024 × 1024 (1:1 Cuadrado HD · Recomendado)",
-    "1344 × 768 (16:9 Cinematic Wide)": "1344 × 768 (16:9 Panorámico cine)",
-    "768 × 1344 (9:16 Vertical Poster)": "768 × 1344 (9:16 Cartel vertical)",
-    "1536 × 1024 (3:2 DSLR Photo)": "1536 × 1024 (3:2 Foto DSLR)",
+    "720 × 1280 (9:16 720P Vertical)": "720 × 1280 (9:16 720P vertical)",
+    "640 × 640 (1:1 Square)": "640 × 640 (1:1 cuadrado)",
+    "1024 × 1024 (1:1 Square HD · Recommended)": "1024 × 1024 (1:1 cuadrado HD · recomendado)",
+    "1344 × 768 (16:9 Cinematic Wide)": "1344 × 768 (16:9 panorámico de cine)",
+    "768 × 1344 (9:16 Vertical Poster)": "768 × 1344 (9:16 cartel vertical)",
+    "1536 × 1024 (3:2 DSLR Photo)": "1536 × 1024 (3:2 foto DSLR)",
     # Preset template titles & LLM/VLM preset prompts
     "[Anime] Makoto Shinkai · Cherry Blossom Railway Crossing": (
         "[Anime] Estilo Makoto Shinkai · Paso a nivel entre cerezos"
@@ -860,10 +860,10 @@ EN_TO_ES: Dict[str, str] = {
         "[Realista] Dron FPV en picado sobre cascada de Islandia"
     ),
     "[Image] Cyberpunk Shanghai Neon Poster (Typography)": (
-        "[Imagen] Cartel neón ciberpunk de Shanghái (Tipografía)"
+        "[Imagen] Cartel neón ciberpunk de Shanghái (tipografía)"
     ),
     "[Image] Medium Format Film Afternoon Tokyo Cafe": (
-        "[Imagen] Café de Tokio de tarde en película formato medio"
+        "[Imagen] Café de Tokio de tarde en película de formato medio"
     ),
     "[Reasoning] Write 3 Makoto Shinkai Anime Storyboard Prompts": (
         "[Razonamiento] Crear 3 prompts de storyboard anime estilo Makoto Shinkai"
@@ -888,23 +888,23 @@ EN_TO_ES: Dict[str, str] = {
     ),
     # ComfyUI preset packs
     "Wan2.2 14B · Image-to-Video + First/Last Frame Dual Workflows": (
-        "Wan2.2 14B · Imagen a vídeo + Flujos duales inicio/fin"
+        "Wan2.2 14B · Imagen a video + flujos duales inicio/fin"
     ),
-    "Beginner Pick · 4-Step Fast": "Recomendado · Rápido en 4 pasos",
+    "Beginner Pick · 4-Step Fast": "Recomendado · rápido en 4 pasos",
     "Includes Single-Image I2V & First/Last-Frame Smooth Transition workflows (~25s on G4, pure built-in nodes, zero missing-node errors)": (
         "Incluye flujos I2V de imagen única y transición suave inicio/fin (~25s en G4, solo nodos integrados, cero errores)"
     ),
     "MiniMax-H3 Turbo · Audio-Video I2V + First/Last Frame Workflows": (
-        "MiniMax-H3 Turbo · I2V audio-vídeo + Flujos inicio/fin"
+        "MiniMax-H3 Turbo · I2V audio-video + flujos inicio/fin"
     ),
     "Synced Stereo Audio · 8-Step": "Audio estéreo sincronizado · 8 pasos",
     "Includes Single-Image & First/Last-Frame Audio-Video workflows generating HD motion with synced ambient SFX, music & dialogue": (
-        "Incluye flujos audio-vídeo de imagen única y doble fotograma con vídeo HD y SFX, música y diálogo sincronizados"
+        "Incluye flujos audio-video de imagen única y doble fotograma con video HD y SFX, música y diálogo sincronizados"
     ),
     "LTX-2.3 (22B) · Cinematic First/Last-Frame Camera Control + Audio": (
-        "LTX-2.3 (22B) · Control de cámara cinematográfico inicio/fin + Audio"
+        "LTX-2.3 (22B) · Control de cámara cinematográfico inicio/fin + audio"
     ),
-    "Cinematic Camera · Only 2 Weights": "Cámara de cine · Solo 2 pesos",
+    "Cinematic Camera · Only 2 Weights": "Cámara de cine · solo 2 pesos",
     "Optimized for dramatic camera motion between keyframes (e.g., aerial crane dive to low-angle close-up with synced soundtrack)": (
         "Optimizado para movimientos amplios de cámara entre fotogramas clave con banda sonora sincronizada"
     ),
@@ -916,8 +916,8 @@ EN_TO_ES: Dict[str, str] = {
         "Pipeline de super-resolución latente activo por defecto: sube 1 imagen para generar base 720P y HD 1920×1080"
     ),
     # Shard descriptions & HF sizing
-    "3D Video VAE BF16 (9.7 GB)": "VAE Vídeo 3D BF16 (9.7 GB)",
-    "32kHz Stereo Audio VAE BF16 (0.6 GB)": "VAE Audio Estéreo 32kHz BF16 (0.6 GB)",
+    "3D Video VAE BF16 (9.7 GB)": "VAE de video 3D BF16 (9.7 GB)",
+    "32kHz Stereo Audio VAE BF16 (0.6 GB)": "VAE de audio estéreo 32kHz BF16 (0.6 GB)",
     "Unsloth UD-Q4_K_M Main Weights (16.5 GB)": "Pesos principales Unsloth UD-Q4_K_M (16.5 GB)",
     "Multimodal Vision Projector (0.93 GB)": "Proyector visual multimodal (0.93 GB)",
     "Unsloth MTP Speculative Head (1.31 GB)": "Cabeza especulativa Unsloth MTP (1.31 GB)",
@@ -943,7 +943,7 @@ EN_REGEX_TO_ES: List[Tuple[re.Pattern[str], Any]] = [
     # main_window.py
     (
         re.compile(r"^Applied preset template: (.+)$", re.DOTALL),
-        r"Plantilla de ejemplo aplicada: \1",
+        r"Plantilla aplicada: \1",
     ),
     (
         re.compile(r"^(\d+) frames · ~([\d.]+)s$"),
@@ -1017,7 +1017,7 @@ EN_REGEX_TO_ES: List[Tuple[re.Pattern[str], Any]] = [
     ),
     (
         re.compile(r"^Generate (\d+)x Audio-Video Clips \(Ctrl\+Enter\)$"),
-        r"Generar \1x clips audio-vídeo (Ctrl+Enter)",
+        r"Generar \1x clips audio-video (Ctrl+Enter)",
     ),
     (
         re.compile(r"^Generate (\d+)x HD Images \(Ctrl\+Enter\)$"),
@@ -1048,15 +1048,15 @@ EN_REGEX_TO_ES: List[Tuple[re.Pattern[str], Any]] = [
             r"^All generated MP4 audio-videos and PNG HD images automatically download to (.+?) on your computer, safe even after cloud shutdown\.$",
             re.DOTALL,
         ),
-        r"Todos los vídeos MP4 con audio e imágenes PNG HD se descargan automáticamente a \1 en tu equipo, a salvo aunque apagues la nube.",
+        r"Todos los videos MP4 con audio e imágenes PNG HD se descargan automáticamente a \1 en tu equipo, a salvo aunque apagues la nube.",
     ),
     (
         re.compile(r"^Google Account: (.+)$", re.DOTALL),
-        lambda m: f"Cuenta Google: {translate_en_to_es(m.group(1))}",
+        lambda m: f"Cuenta de Google: {translate_en_to_es(m.group(1))}",
     ),
     (
         re.compile(r"^Cloud GPU: (.+)$", re.DOTALL),
-        lambda m: f"GPU nube: {localize_server_text_es(m.group(1))}",
+        lambda m: f"GPU en la nube: {localize_server_text_es(m.group(1))}",
     ),
     # viewmodel.py
     (
@@ -1085,7 +1085,7 @@ EN_REGEX_TO_ES: List[Tuple[re.Pattern[str], Any]] = [
     ),
     (
         re.compile(r"^Please click 'Load to VRAM' in the Model Center to load (.+?) first\.$"),
-        r"Pulsa primero 'Cargar VRAM' en el centro de modelos para cargar \1.",
+        r"Pulsa primero 'Cargar en VRAM' en el centro de modelos para cargar \1.",
     ),
     (
         re.compile(r"^Weight download request error: (.+)$", re.DOTALL),
@@ -1158,7 +1158,7 @@ EN_REGEX_TO_ES: List[Tuple[re.Pattern[str], Any]] = [
             r"^Google account bound \((.+?)\)! Ready to wake (.+?) runtime in 1 click\.$",
             re.DOTALL,
         ),
-        r"¡Cuenta Google vinculada (\1)! Listo para activar \2 en 1 clic.",
+        r"¡Cuenta de Google vinculada (\1)! Listo para activar \2 en 1 clic.",
     ),
     (
         re.compile(r"^Account binding failed: (.+)$", re.DOTALL),
@@ -1264,7 +1264,7 @@ EN_REGEX_TO_ES: List[Tuple[re.Pattern[str], Any]] = [
     ),
     (
         re.compile(r"^Tip: Click 'Load to VRAM' on the left to load (.+?) first$"),
-        r"Consejo: pulsa 'Cargar VRAM' a la izquierda para cargar \1 primero",
+        r"Consejo: pulsa 'Cargar en VRAM' a la izquierda para cargar \1 primero",
     ),
     (
         re.compile(r"^Copied (.+?) to clipboard\.$", re.DOTALL),
@@ -1338,7 +1338,7 @@ EN_REGEX_TO_ES: List[Tuple[re.Pattern[str], Any]] = [
     ),
     (
         re.compile(r"^Too Large \((.+?) · Try GGUF\)$"),
-        r"Demasiado grande (\1 · Prueba GGUF)",
+        r"Demasiado grande (\1 · prueba GGUF)",
     ),
 ]
 
@@ -1357,14 +1357,14 @@ def translate_en_to_es(en: str) -> str:
 # ─── Shard Descriptions (Chinese / English -> Spanish) ────────────────────────
 
 SHARD_DESC_EXACT_ES: Dict[str, str] = {
-    "3D 视频 VAE BF16 (9.7 GB)": "VAE Vídeo 3D BF16 (9.7 GB)",
-    "32kHz 立体声 VAE BF16 (0.6 GB)": "VAE Audio Estéreo 32kHz BF16 (0.6 GB)",
+    "3D 视频 VAE BF16 (9.7 GB)": "VAE de video 3D BF16 (9.7 GB)",
+    "32kHz 立体声 VAE BF16 (0.6 GB)": "VAE de audio estéreo 32kHz BF16 (0.6 GB)",
     "Unsloth UD-Q4_K_M 主模型 (16.5 GB)": "Pesos principales Unsloth UD-Q4_K_M (16.5 GB)",
     "多模态视觉投影器 (0.93 GB)": "Proyector visual multimodal (0.93 GB)",
     "Unsloth MTP 多词元投机解码头 (1.31 GB)": "Cabeza especulativa Unsloth MTP (1.31 GB)",
     "图像 VAE": "VAE de imagen",
-    "3D Video VAE BF16 (9.7 GB)": "VAE Vídeo 3D BF16 (9.7 GB)",
-    "32kHz Stereo Audio VAE BF16 (0.6 GB)": "VAE Audio Estéreo 32kHz BF16 (0.6 GB)",
+    "3D Video VAE BF16 (9.7 GB)": "VAE de video 3D BF16 (9.7 GB)",
+    "32kHz Stereo Audio VAE BF16 (0.6 GB)": "VAE de audio estéreo 32kHz BF16 (0.6 GB)",
     "Unsloth UD-Q4_K_M Main Weights (16.5 GB)": "Pesos principales Unsloth UD-Q4_K_M (16.5 GB)",
     "Multimodal Vision Projector (0.93 GB)": "Proyector visual multimodal (0.93 GB)",
     "Unsloth MTP Speculative Head (1.31 GB)": "Cabeza especulativa Unsloth MTP (1.31 GB)",
@@ -1449,7 +1449,7 @@ SERVER_EXACT_ZH_TO_ES: Dict[str, str] = {
         "Mapeando pesos de la troncal DiT 33B MiniMax-H3 BF16 (13 fragmentos)..."
     ),
     "正在映射 3D 视频 VAE 与 32kHz 立体声 VAE 权重...": (
-        "Mapeando pesos de VAE Vídeo 3D y VAE Audio Estéreo 32kHz..."
+        "Mapeando pesos de VAE de video 3D y VAE de audio estéreo 32kHz..."
     ),
     "正在构建 MiniMax-H3 BF16 原生 GPU 计算图与 Processor...": (
         "Construyendo grafo GPU nativo BF16 y Processor de MiniMax-H3..."
@@ -1480,7 +1480,7 @@ SERVER_EXACT_ZH_TO_ES: Dict[str, str] = {
         "Configurando persistencia Google Drive, motores y túnel (~40-90s)..."
     ),
     "尚未授权登录 Google 账号，请先点击「绑定账号」": (
-        "Cuenta Google sin autorizar. Pulsa primero 'Vincular'."
+        "Cuenta de Google sin autorizar. Pulsa primero 'Vincular'."
     ),
     "尚未登录 Google Colab CLI": "Sesión no iniciada en Google Colab CLI",
     "已释放全部云端实例": "Todas las instancias en la nube liberadas",
@@ -1542,7 +1542,7 @@ SERVER_EXACT_ZH_TO_ES: Dict[str, str] = {
     "已被新提交任务接替中断": "Interrumpida por una nueva tarea enviada",
     "任务已提交至 Colab 队列...": "Tarea enviada a la cola de Colab...",
     "尚未有任何模型加载至 GPU 显存！请先在左侧点击「下载权重」与「加载到显存」。": (
-        "¡No hay ningún modelo cargado en VRAM! Pulsa 'Descargar' y 'Cargar VRAM' a la izquierda."
+        "¡No hay ningún modelo cargado en VRAM! Pulsa 'Descargar' y 'Cargar en VRAM' a la izquierda."
     ),
     "当前指定模型未驻留显存，无需卸载。": "El modelo indicado no está en VRAM; no hace falta quitarlo.",
     "已终止推理并从显存卸载该模型": "Inferencia detenida y modelo descargado de la VRAM",
@@ -1580,9 +1580,9 @@ SERVER_EXACT_ZH_TO_ES: Dict[str, str] = {
         "Cargando codificador de texto 32B en caché RAM (~5s al cambiar de prompt)..."
     ),
     "正在准备潜空间与多模态编码...": "Preparando espacio latente y codificación multimodal...",
-    "正在合成 32kHz 立体声音轨与 MP4 视频...": "Sintetizando pista estéreo 32kHz y vídeo MP4...",
+    "正在合成 32kHz 立体声音轨与 MP4 视频...": "Sintetizando pista estéreo 32kHz y video MP4...",
     "Qwen3.8-27B / Qwen3.8-27B-GGUF 尚未加载至 Colab GPU 显存，请先在 Mac 客户端点击「加载到显存」。": (
-        "Qwen3.8-27B / Qwen3.8-27B-GGUF aún no está en VRAM. Pulsa 'Cargar VRAM' en el cliente."
+        "Qwen3.8-27B / Qwen3.8-27B-GGUF aún no está en VRAM. Pulsa 'Cargar en VRAM' en el cliente."
     ),
     "请先在客户端加载 MiniMax-H3-Image、Qwen-Image-2.1 或 Z-Image-Turbo 至显存。": (
         "Carga primero MiniMax-H3-Image, Qwen-Image-2.1 o Z-Image-Turbo en la VRAM desde el cliente."
@@ -1613,9 +1613,9 @@ def _translate_mode_label(lbl: str) -> str:
 
 def _translate_pack_title(title: str) -> str:
     zh_to_es = {
-        "万相 Wan2.2 14B · 图生视频 + 首尾帧双工作流": "Wan2.2 14B · Imagen a vídeo + Flujos duales inicio/fin",
-        "MiniMax-H3 Turbo · 图生有声视频 + 首尾帧双工作流": "MiniMax-H3 Turbo · I2V audio-vídeo + Flujos inicio/fin",
-        "LTX-2.3 (22B) · 首尾帧电影级运镜有声工作流": "LTX-2.3 (22B) · Control de cámara cinematográfico inicio/fin + Audio",
+        "万相 Wan2.2 14B · 图生视频 + 首尾帧双工作流": "Wan2.2 14B · Imagen a video + flujos duales inicio/fin",
+        "MiniMax-H3 Turbo · 图生有声视频 + 首尾帧双工作流": "MiniMax-H3 Turbo · I2V audio-video + flujos inicio/fin",
+        "LTX-2.3 (22B) · 首尾帧电影级运镜有声工作流": "LTX-2.3 (22B) · Control de cámara cinematográfico inicio/fin + audio",
         "混元 HunyuanVideo 1.5 · 单图直出 1080P 超分工作流": "HunyuanVideo 1.5 · Flujo directo 1080P super-resolución desde 1 imagen",
     }
     return zh_to_es.get(title, title)
@@ -1624,10 +1624,10 @@ def _translate_pack_title(title: str) -> str:
 def _translate_stage_label(lbl: str) -> str:
     mapping = {
         "高清图像 VAE 解码": "decodificación VAE de imagen HD",
-        "3D 视频 VAE 解码": "decodificación VAE de vídeo 3D",
-        "3D 视频与音频 VAE 解码": "decodificación VAE de vídeo 3D y audio",
-        "多模态提示词编码": "Codificación multimodal de prompt",
-        "32kHz 立体声解码": "Decodificación estéreo 32kHz",
+        "3D 视频 VAE 解码": "decodificación VAE de video 3D",
+        "3D 视频与音频 VAE 解码": "decodificación VAE de video 3D y audio",
+        "多模态提示词编码": "codificación multimodal de prompt",
+        "32kHz 立体声解码": "decodificación estéreo 32kHz",
     }
     return mapping.get(lbl, lbl)
 
@@ -1636,7 +1636,7 @@ SERVER_REGEX_ZH_TO_ES: List[Tuple[re.Pattern[str], Any]] = [
     # colab_bridge.py wake & stop messages
     (
         re.compile(r"^尚未授权登录 Google 账号，请先点击「\s*绑定账号」$"),
-        "Cuenta Google sin autorizar. Pulsa primero 'Vincular'.",
+        "Cuenta de Google sin autorizar. Pulsa primero 'Vincular'.",
     ),
     (
         re.compile(r"^🛑?\s*已彻底释放全部云端实例！当前计费速率:\s*([\d.]+)\s*CU/小时$"),
@@ -1994,7 +1994,7 @@ SERVER_REGEX_ZH_TO_ES: List[Tuple[re.Pattern[str], Any]] = [
         re.compile(
             r"^(.+?) 全部 (\d+)/(\d+) 个权重文件已就绪（共 ([\d.]+) GB），现在可点击「加载到显存」！$"
         ),
-        r"¡Todos los pesos de \1 listos (\2/\3 · \4 GB)! Ya puedes pulsar 'Cargar VRAM'.",
+        r"¡Todos los pesos de \1 listos (\2/\3 · \4 GB)! Ya puedes pulsar 'Cargar en VRAM'.",
     ),
     (
         re.compile(r"^下载 (.+?) 权重出错:\s*(.+)$", re.DOTALL),
@@ -2200,17 +2200,17 @@ SERVER_REGEX_ZH_TO_ES: List[Tuple[re.Pattern[str], Any]] = [
     ),
     (
         re.compile(r"^(.+?) 尚未加载到 GPU 显存！请先在左侧点击「加载到显存」（显存充裕时可与现有模型同时常驻）。$"),
-        r"¡\1 aún no está en VRAM! Pulsa 'Cargar VRAM' a la izquierda (si hay VRAM libre, convive con los modelos activos).",
+        r"¡\1 aún no está en VRAM! Pulsa 'Cargar en VRAM' a la izquierda (si hay VRAM libre, convive con los modelos activos).",
     ),
     (
         re.compile(r"^(.+?) 尚未加载至 GPU 显存！请先在左侧点击「加载到显存」。$"),
-        r"¡\1 aún no está en VRAM! Pulsa primero 'Cargar VRAM' a la izquierda.",
+        r"¡\1 aún no está en VRAM! Pulsa primero 'Cargar en VRAM' a la izquierda.",
     ),
     (
         re.compile(
             r"^(.+?) 尚未加载到显存（当前已常驻：(.+?)）。请点击左侧「加载到显存」，显存充裕时可同时常驻无需卸载现有模型。$"
         ),
-        r"\1 no está en VRAM (activos: \2). Pulsa 'Cargar VRAM' a la izquierda; si hay espacio, conviven sin quitarlos.",
+        r"\1 no está en VRAM (activos: \2). Pulsa 'Cargar en VRAM' a la izquierda; si hay espacio, conviven sin quitarlos.",
     ),
     (
         re.compile(r"^正在准备 (.+?) 推理管线(?: \(共 (\d+) 项\))?\.\.\.$"),
@@ -2255,7 +2255,7 @@ SERVER_REGEX_ZH_TO_ES: List[Tuple[re.Pattern[str], Any]] = [
     (
         re.compile(r"^\[(.+?)\] (图像|视频)生成完成 \| 耗时 ([\d.]+s) \| Seed: (\d+) \| 已保存:\s*(.+)$"),
         lambda m: (
-            f"[{m.group(1)}] {'Imagen' if m.group(2) == '图像' else 'Vídeo'} generado | "
+            f"[{m.group(1)}] {'Imagen generada' if m.group(2) == '图像' else 'Video generado'} | "
             f"Duración {m.group(3)} | Seed: {m.group(4)} | Guardado: {m.group(5)}"
         ),
     ),

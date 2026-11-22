@@ -55,7 +55,7 @@ Plantilla para cada cambio (el más reciente arriba):
 **Por qué:** Permitir usar todo el cliente de Windows en español manteniendo la capacidad de fusionar cambios de `upstream/master` con el mínimo de conflictos posible.
 **Archivos tocados:**
 - `windows_app/i18n_es.py` (nuevo: normalización y ciclo de idioma, diccionario `EN_TO_ES`, plantillas regex `EN_REGEX_TO_ES`, reglas chino→español `SERVER_EXACT_ZH_TO_ES` y `SERVER_REGEX_ZH_TO_ES` para `colab_bridge.py` y `app.py`, y helpers de cambio en vivo)
-- `windows_app/models.py` (modificado: import de `i18n_es`, `is_en()` como «no chino», `set_lang`, `tr`, `localize_shard_desc`, `localize_server_text` con conservación de `[HH:MM:SS]` y fallback en inglés, y `ModelFileItem.desc`)
+- `windows_app/models.py` (modificado: import de `i18n_es`, `is_en()` como «no chino», `set_lang` (también carga la traducción de Qt), `tr`, `localize_shard_desc`, `localize_server_text` con conservación de `[HH:MM:SS]` y fallback en inglés, y `ModelFileItem.desc`)
 - `windows_app/viewmodel.py` (modificado: carga/guardado y ciclo de `"es"`, delegación de `_translate_default_runtime_strings` y traducción de líneas en `append_console_line`, `_apply_status_response` y `_poll_colab_job`, además de `cancel_current_generation`)
 - `windows_app/main_window.py` (modificado: etiqueta/tooltip de `lang_btn` mediante `lang_button_info`, palabras clave de coloración de terminal en español en `_refresh_console` y ancho fijo del botón «Mask» de 58 a 68 px)
 - `windows_app/onboarding_dialog.py` (modificado: etiqueta/tooltip de `lang_btn` mediante `lang_button_info`)
@@ -74,6 +74,11 @@ Plantilla para cada cambio (el más reciente arriba):
   botón de idioma pasa a `中文 → ES → EN`. El botón «Mask» se amplió de 58 a 68 px porque «Ocultar»
   necesita 66 px (el «Masked» original en inglés ya se cortaba con 61 px). Medido con la fuente real
   de Windows: ningún botón de una línea queda más estrecho que su texto en la ventana ni en la guía.
+- Botones y menús propios de Qt («Yes/Cancel» de los diálogos, menú de clic derecho en campos de
+  texto, selector de archivos) salían en inglés. `i18n_es.apply_qt_translator()` carga el catálogo
+  oficial `qtbase_es.qm` de PySide6 solo en modo español; `models.set_lang()` lo llama (1 línea).
+  En chino e inglés no cambia nada.
+- Ajuste de traducción en `windows_app/i18n_es.py`: «video» sin tilde, mayúsculas al estilo español, «Actualizar», «Carpeta de salida», «Reproducir / Abrir», «Plantillas», corrección de preposiciones/artículos y verificación de anchos de botones.
 
 **Notas para fusionar con upstream:**
 - Si el autor añade frases nuevas en `tr(zh, en)` sin tocar `i18n_es.py`, `tr()` hace fallback automático al inglés y nunca muestra texto vacío ni rompe la interfaz.
