@@ -33,6 +33,7 @@ def is_en() -> bool:
 def set_lang(lang: str) -> None:
     global _CURRENT_LANG
     _CURRENT_LANG = i18n_es.normalize_lang(lang)
+    i18n_es.apply_qt_translator(_CURRENT_LANG)
 
 
 def tr(zh: str, en: str) -> str:

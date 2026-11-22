@@ -44,6 +44,41 @@ def lang_button_info(lang: str) -> Tuple[str, str]:
     return ("中文", "Switch UI to Chinese (切换为中文)")
 
 
+_QT_TRANSLATOR: Any = None
+
+
+def apply_qt_translator(lang: str) -> None:
+    """Load Qt's own Spanish catalog (Yes/Cancel buttons, text-field context menus,
+    file dialogs) while the UI is Spanish; remove it for any other language."""
+    global _QT_TRANSLATOR
+    try:
+        from PySide6.QtCore import QCoreApplication, QLibraryInfo, QTranslator
+    except Exception:
+        return
+    app = QCoreApplication.instance()
+    if app is None:
+        return
+    if _QT_TRANSLATOR is not None:
+        app.removeTranslator(_QT_TRANSLATOR)
+        _QT_TRANSLATOR = None
+    if normalize_lang(lang) != "es":
+        return
+    search_dirs = [QLibraryInfo.path(QLibraryInfo.LibraryPath.TranslationsPath)]
+    try:
+        import PySide6
+        from pathlib import Path
+
+        search_dirs.append(str(Path(PySide6.__file__).resolve().parent / "translations"))
+    except Exception:
+        pass
+    translator = QTranslator(app)
+    for folder in search_dirs:
+        if folder and translator.load("qtbase_es", folder):
+            app.installTranslator(translator)
+            _QT_TRANSLATOR = translator
+            return
+
+
 # ─── English -> Spanish Static Dictionary (keys match exact tr(..., en) text) ─
 
 EN_TO_ES: Dict[str, str] = {
