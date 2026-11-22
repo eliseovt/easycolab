@@ -769,7 +769,7 @@ class ViewModelServicesMixin:
                 seen = set()
                 for qpath in qpaths:
                     raw_arr = None
-                    for host in ("https://huggingface.co", "https://hf-mirror.com"):
+                    for host in ("https://huggingface.co",):
                         try:
                             resp = requests.get(f"{host}{qpath}", headers=headers, timeout=10)
                             if resp.status_code == 200 and isinstance(resp.json(), list):
@@ -875,7 +875,7 @@ class ViewModelServicesMixin:
                 headers["Authorization"] = f"Bearer {tok}"
 
             meta = None
-            for host in ("https://huggingface.co", "https://hf-mirror.com"):
+            for host in ("https://huggingface.co",):
                 try:
                     resp = requests.get(f"{host}/api/models/{clean_id}?blobs=true", headers=headers, timeout=12)
                     if resp.status_code == 200 and isinstance(resp.json(), dict):
@@ -970,7 +970,7 @@ class ViewModelServicesMixin:
             import re as _re
 
             readme_excerpt = ""
-            for host in ("https://huggingface.co", "https://hf-mirror.com"):
+            for host in ("https://huggingface.co",):
                 try:
                     r_resp = requests.get(f"{host}/{rid}/raw/main/README.md", headers=headers, timeout=6)
                     if r_resp.status_code == 200:

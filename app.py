@@ -1854,7 +1854,7 @@ def fetch_hf_trending_models_core(
 
     for qpath in query_paths:
         fetched = None
-        for host in ("https://huggingface.co", "https://hf-mirror.com"):
+        for host in ("https://huggingface.co",):
             try:
                 req = urllib.request.Request(f"{host}{qpath}", headers=headers)
                 with urllib.request.urlopen(req, timeout=10) as resp:
@@ -1942,7 +1942,7 @@ def fetch_hf_model_detail_core(repo_id: str, hf_token: str = "") -> Dict[str, An
         headers["Authorization"] = f"Bearer {token}"
 
     meta: Optional[Dict[str, Any]] = None
-    for host in ("https://huggingface.co", "https://hf-mirror.com"):
+    for host in ("https://huggingface.co",):
         try:
             url = f"{host}/api/models/{clean_id}?blobs=true"
             req = urllib.request.Request(url, headers=headers)
@@ -2043,7 +2043,7 @@ def fetch_hf_model_detail_core(repo_id: str, hf_token: str = "") -> Dict[str, An
     sizing = _analyze_hf_model_sizing(meta, is_gguf, fallback_storage_gb=fallback_gb)
 
     readme_excerpt = ""
-    for host in ("https://huggingface.co", "https://hf-mirror.com"):
+    for host in ("https://huggingface.co",):
         try:
             r_url = f"{host}/{rid}/raw/main/README.md"
             r_req = urllib.request.Request(r_url, headers={"User-Agent": "EasyColab/2.0"})
@@ -2159,7 +2159,7 @@ def inspect_and_resolve_hf_repo(
     meta = None
     last_http_code = 0
     last_err = None
-    for host in ("https://huggingface.co", "https://hf-mirror.com"):
+    for host in ("https://huggingface.co",):
         api_url = f"{host}/api/models/{repo_clean}?blobs=true"
         req = urllib.request.Request(api_url, headers=headers)
         try:

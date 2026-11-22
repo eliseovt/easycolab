@@ -201,7 +201,7 @@ fun StudioViewModel.fetchTrendingHFModels(
             val seen = mutableSetOf<String>()
             for (qpath in qpaths) {
                 var rawArr: JSONArray? = null
-                for (host in listOf("https://huggingface.co", "https://hf-mirror.com")) {
+                for (host in listOf("https://huggingface.co")) {
                     try {
                         val rb = Request.Builder()
                             .url("$host$qpath")
@@ -284,7 +284,7 @@ fun StudioViewModel.fetchHFModelDetail(repoIdRaw: String) {
         val tok = hfToken.trim()
         val detail = withContext(Dispatchers.IO) {
             var meta: JSONObject? = null
-            for (host in listOf("https://huggingface.co", "https://hf-mirror.com")) {
+            for (host in listOf("https://huggingface.co")) {
                 try {
                     val rb = Request.Builder()
                         .url("$host/api/models/$cleanId?blobs=true")
@@ -350,7 +350,7 @@ fun StudioViewModel.fetchHFModelDetail(repoIdRaw: String) {
                 }
             }
             var readme = ""
-            for (host in listOf("https://huggingface.co", "https://hf-mirror.com")) {
+            for (host in listOf("https://huggingface.co")) {
                 try {
                     val rb = Request.Builder().url("$host/$rid/raw/main/README.md").get()
                     if (tok.isNotEmpty()) rb.header("Authorization", "Bearer $tok")
