@@ -21,7 +21,8 @@ from PySide6.QtWidgets import (
     QWidget,
 )
 
-from windows_app.models import get_local_save_dir, is_en, open_path_in_os, tr
+from windows_app import i18n_es
+from windows_app.models import get_lang, get_local_save_dir, open_path_in_os, tr
 from windows_app.theme import DARK_PALETTE, LIGHT_PALETTE, build_stylesheet, draw_easycolab_icon_pixmap
 from windows_app.viewmodel import EasyColabViewModel
 from windows_app.widgets import PillBadge, StatusDot, set_btn_role
@@ -226,9 +227,10 @@ class ColabGuideDialog(QDialog):
         title_col.addWidget(self.step_sub_lbl)
         top_row.addLayout(title_col, 1)
 
-        self.lang_btn = set_btn_role(QPushButton("EN" if not is_en() else "中文"), "pill")
+        _lang_lbl, _lang_tip = i18n_es.lang_button_info(get_lang())
+        self.lang_btn = set_btn_role(QPushButton(_lang_lbl), "pill")
         self.lang_btn.setFixedHeight(28)
-        self.lang_btn.setToolTip(tr("切换界面为英文 (Switch to English)", "Switch UI to Chinese (切换为中文)"))
+        self.lang_btn.setToolTip(_lang_tip)
         self.lang_btn.clicked.connect(self.vm.toggle_language)
         top_row.addWidget(self.lang_btn, 0, Qt.AlignmentFlag.AlignTop)
 

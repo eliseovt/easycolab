@@ -49,6 +49,36 @@ Plantilla para cada cambio (el más reciente arriba):
 **Notas para fusionar con upstream:**
 -->
 
+### 2026-11-22 · Añadir idioma español al cliente de Windows
+
+**Qué se hizo:** Se añadió el español (`"es"`) como tercer idioma seleccionable en el cliente de escritorio para Windows, con cambio cíclico `中文 → ES → EN → 中文` desde la barra superior y desde la guía inicial, persistencia en `settings.json`, traducción de la interfaz (`tr()`), etiquetas dinámicas, mensajes de `colab_bridge.py` / `app.py` y líneas del panel «Run Logs» (respetando `[HH:MM:SS]`).
+**Por qué:** Permitir usar todo el cliente de Windows en español manteniendo la capacidad de fusionar cambios de `upstream/master` con el mínimo de conflictos posible.
+**Archivos tocados:**
+- `windows_app/i18n_es.py` (nuevo: normalización y ciclo de idioma, diccionario `EN_TO_ES`, plantillas regex `EN_REGEX_TO_ES`, reglas chino→español `SERVER_EXACT_ZH_TO_ES` y `SERVER_REGEX_ZH_TO_ES` para `colab_bridge.py` y `app.py`, y helpers de cambio en vivo)
+- `windows_app/models.py` (modificado: import de `i18n_es`, `is_en()` como «no chino», `set_lang`, `tr`, `localize_shard_desc`, `localize_server_text` con conservación de `[HH:MM:SS]` y fallback en inglés, y `ModelFileItem.desc`)
+- `windows_app/viewmodel.py` (modificado: carga/guardado y ciclo de `"es"`, delegación de `_translate_default_runtime_strings` y traducción de líneas en `append_console_line`, `_apply_status_response` y `_poll_colab_job`, además de `cancel_current_generation`)
+- `windows_app/main_window.py` (modificado: etiqueta/tooltip de `lang_btn` mediante `lang_button_info`, palabras clave de coloración de terminal en español en `_refresh_console` y ancho fijo del botón «Mask» de 58 a 68 px)
+- `windows_app/onboarding_dialog.py` (modificado: etiqueta/tooltip de `lang_btn` mediante `lang_button_info`)
+
+**No se tocó:** `colab_bridge.py`, `app.py`, `windows_app/EasyColab.spec`, `windows_app/assets/AppIcon.ico`, `macos_app/`, `ios_app/` ni `android_app/`.
+**Verificado:**
+- `py_compile` de todos los archivos nuevos y modificados: sin errores.
+- Comprobación AST sobre `windows_app/*.py`: 450 llamadas literales a `tr()` (432 traducidas al español; 18 conservadas idénticas al inglés por ser siglas/términos técnicos o unidades breves como `Drive`, `Seed`, `VRAM`, `RAM`, `GGUF`, `LLM / VLM`, `API Key`, `Play`, `Mute`, `15/30/60 min`, `[Img]`, `[Vid]`) y 101 llamadas dinámicas/f-strings cubiertas por `EN_REGEX_TO_ES` y tablas del catálogo.
+- Arranque con `QT_QPA_PLATFORM=offscreen` en modo `"es"`, construcción de `EasyColabMainWindow` y `ColabGuideDialog` (4 pasos), ciclo de 3 cambios de idioma (`es → zh → en → es`), conservación de `[HH:MM:SS]` en `append_console_line` y medición con `QFontMetrics`.
+- `pytest tests` (con timeout de 25 s por el cuelgue preexistente en `test_keepalive_daemon_exits_promptly_when_parent_stdin_closes`; excluyéndolo: 10 pasan, 8 fallan por incompatibilidades preexistentes de rutas/permisos en Windows, 3 omitidos).
+- Compilación de `dist\EasyColab\EasyColab.exe` (260,2 MB totales en `dist\EasyColab`) mediante `.\.venv\Scripts\pyinstaller.exe --noconfirm --clean --distpath dist --workpath build\pyinstaller windows_app\EasyColab.spec`: completada (`windows_app.i18n_es` incluido en el análisis y `--bridge-cli auth_status` responde `{"ok": true, "logged_in": false}`).
+- Revisión posterior: el mensaje de reintento «⏳ … 算力池繁忙 …» seguía en chino porque `_LEADING_DECOR_RE`
+  no quitaba el emoji ⏳ (U+23F3). Se añadió el rango U+2300–U+23FF. Comprobado con las líneas reales
+  de la prueba de «Wake & Deploy», y el `.exe` se recompiló.
+- Ajustes posteriores: «Tapar/Tapado» → «Ocultar/Oculto», «Unido» → «Superponer» y el orden del
+  botón de idioma pasa a `中文 → ES → EN`. El botón «Mask» se amplió de 58 a 68 px porque «Ocultar»
+  necesita 66 px (el «Masked» original en inglés ya se cortaba con 61 px). Medido con la fuente real
+  de Windows: ningún botón de una línea queda más estrecho que su texto en la ventana ni en la guía.
+
+**Notas para fusionar con upstream:**
+- Si el autor añade frases nuevas en `tr(zh, en)` sin tocar `i18n_es.py`, `tr()` hace fallback automático al inglés y nunca muestra texto vacío ni rompe la interfaz.
+- Si hay conflictos en `models.py` o `viewmodel.py`, basta mantener el import `from windows_app import i18n_es` y reenganchar las llamadas puntuales a `i18n_es.*` y `localize_server_text(...)` en consola.
+
 ### 2026-11-22 · Fijar google-colab-cli a 0.7.5
 
 **Qué se hizo:** `google-colab-cli>=0.7.5` pasa a `google-colab-cli==0.7.5` en los requisitos y en

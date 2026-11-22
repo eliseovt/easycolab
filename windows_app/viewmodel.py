@@ -23,6 +23,7 @@ from typing import Any, Callable, Dict, List, Optional
 import requests
 from PySide6.QtCore import QObject, QTimer, Signal
 
+from windows_app import i18n_es
 from windows_app.models import (
     IMAGE_RESOLUTIONS,
     MODEL_SPEC_MAP,
@@ -105,7 +106,7 @@ class EasyColabViewModel(ViewModelServicesMixin, QObject):
         self._settings = self._load_settings_file()
 
         # ── Language Setting (Default MUST be Simplified Chinese "zh") ──
-        self.language: str = "en" if str(self._settings.get("language", "zh")) == "en" else "zh"
+        self.language: str = i18n_es.normalize_lang(self._settings.get("language", "zh"))
         set_lang(self.language)
 
         # ── Persisted Settings (Windows defaults to Light Mode) ──
@@ -321,7 +322,7 @@ class EasyColabViewModel(ViewModelServicesMixin, QObject):
         self.theme_changed.emit()
 
     def set_language(self, lang: str) -> None:
-        target = "en" if str(lang).strip().lower().startswith("en") else "zh"
+        target = i18n_es.normalize_lang(lang)
         if target == self.language and get_lang() == target:
             return
         self.language = target
@@ -331,18 +332,11 @@ class EasyColabViewModel(ViewModelServicesMixin, QObject):
         self.language_changed.emit()
 
     def toggle_language(self) -> None:
-        self.set_language("zh" if self.language == "en" else "en")
+        self.set_language(i18n_es.next_lang(self.language))
 
     def _translate_default_runtime_strings(self) -> None:
-        to_en = is_en()
-
         def swap(val: str, pairs: List[tuple[str, str]]) -> str:
-            for zh_txt, en_txt in pairs:
-                if to_en and val == zh_txt:
-                    return en_txt
-                if (not to_en) and val == en_txt:
-                    return zh_txt
-            return localize_server_text(val) if to_en else val
+            return i18n_es.swap_runtime_text(val, pairs, self.language, localize_server_text)
 
         self.gpu_name = swap(
             self.gpu_name,
@@ -405,14 +399,7 @@ class EasyColabViewModel(ViewModelServicesMixin, QObject):
             if d.id in MODEL_SPEC_MAP:
                 d.name = MODEL_SPEC_MAP[d.id].name
 
-        for tpl in PRESET_TEMPLATES:
-            if tpl.visual_en and tpl.visual_en != tpl.visual_zh:
-                if to_en and self.visual_prompt == tpl.visual_zh:
-                    self.visual_prompt = tpl.visual_en
-                    break
-                if (not to_en) and self.visual_prompt == tpl.visual_en:
-                    self.visual_prompt = tpl.visual_zh
-                    break
+        self.visual_prompt = i18n_es.swap_preset_visual(self.visual_prompt, PRESET_TEMPLATES, self.language)
 
     def set_mask_server_url(self, enabled: bool) -> None:
         self.mask_server_url = bool(enabled)
@@ -546,7 +533,7 @@ class EasyColabViewModel(ViewModelServicesMixin, QObject):
         return mask_url_display(text, self.mask_server_url)
 
     def append_console_line(self, line: str) -> None:
-        clean = strip_emoji(self.masked_url(line))
+        clean = localize_server_text(strip_emoji(self.masked_url(line)))
         if not clean:
             return
         self.live_console_lines.append(clean)
@@ -835,7 +822,7 @@ class EasyColabViewModel(ViewModelServicesMixin, QObject):
         # Console lines from server
         if isinstance(d.get("console_lines"), list) and d["console_lines"]:
             cleaned_lines = [
-                strip_emoji(self.masked_url(str(ln)))
+                localize_server_text(strip_emoji(self.masked_url(str(ln))))
                 for ln in d["console_lines"]
                 if str(ln).strip()
             ]
@@ -1462,7 +1449,7 @@ class EasyColabViewModel(ViewModelServicesMixin, QObject):
 
                 if isinstance(j.get("console_lines"), list) and j["console_lines"]:
                     self.live_console_lines = [
-                        strip_emoji(self.masked_url(str(ln)))
+                        localize_server_text(strip_emoji(self.masked_url(str(ln))))
                         for ln in j["console_lines"]
                         if str(ln).strip()
                     ][-400:]
@@ -1520,7 +1507,9 @@ class EasyColabViewModel(ViewModelServicesMixin, QObject):
             "Stop signal sent. Interrupting active cloud GPU sampling job...",
         )
         self.live_console_lines = [
-            ln for ln in self.live_console_lines if "实时下载/采样进度流" not in ln
+            ln
+            for ln in self.live_console_lines
+            if "实时下载/采样进度流" not in ln and "descarga/muestreo" not in ln and "Download/Sampling" not in ln
         ]
         self.state_changed.emit()
         self.console_changed.emit()

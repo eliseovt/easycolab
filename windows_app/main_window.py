@@ -44,6 +44,7 @@ from PySide6.QtWidgets import (
     QMainWindow,
 )
 
+from windows_app import i18n_es
 from windows_app.models import (
     COMFY_WEIGHT_SUBFOLDERS,
     GPU_CHOICES,
@@ -318,9 +319,10 @@ class EasyColabMainWindow(WorkspaceMixin, QMainWindow):
         h_lay.addWidget(title)
         h_lay.addStretch(1)
 
-        self.lang_btn = set_btn_role(QPushButton("EN" if not is_en() else "中文"), "pill")
+        _lang_lbl, _lang_tip = i18n_es.lang_button_info(get_lang())
+        self.lang_btn = set_btn_role(QPushButton(_lang_lbl), "pill")
         self.lang_btn.setFixedHeight(26)
-        self.lang_btn.setToolTip(tr("切换界面为英文 (Switch to English)", "Switch UI to Chinese (切换为中文)"))
+        self.lang_btn.setToolTip(_lang_tip)
         self.lang_btn.clicked.connect(self.vm.toggle_language)
         h_lay.addWidget(self.lang_btn)
 
@@ -437,7 +439,7 @@ class EasyColabMainWindow(WorkspaceMixin, QMainWindow):
         url_row.addWidget(self.url_input, 1)
 
         self.mask_eye_btn = QPushButton(tr("打码", "Mask"))
-        self.mask_eye_btn.setFixedWidth(58)
+        self.mask_eye_btn.setFixedWidth(68)
         self.mask_eye_btn.setToolTip(
             tr(
                 "录屏/截图防泄密打码开关：隐藏公网隧道域名与账号邮箱",
@@ -1930,11 +1932,11 @@ class EasyColabMainWindow(WorkspaceMixin, QMainWindow):
         html_lines = []
         for ln in self.vm.live_console_lines:
             esc = html.escape(ln)
-            if any(k in ln for k in ("失败", "错误", "异常", "ERROR", "Error", "error:", "Failed", "failed")):
+            if any(k in ln for k in ("失败", "错误", "异常", "ERROR", "Error", "error:", "Failed", "failed", "Falló", "falló", "Fallo", "fallo", "Excepción")):
                 col = "#FA7575" if is_dark else "#DC2626"
             elif "───" in ln:
                 col = "#75CCFA" if is_dark else "#0284C7"
-            elif any(k in ln for k in ("%", "已装载", "成功", "完成", "Loaded", "Success", "Complete", "complete", "ready.")):
+            elif any(k in ln for k in ("%", "已装载", "成功", "完成", "Loaded", "Success", "Complete", "complete", "ready.", "Cargado", "cargado", "Completado", "completado", "Éxito", "listo.")):
                 col = "#59EB8C" if is_dark else "#059669"
             else:
                 col = "#DEDEDE" if is_dark else "#1E293B"

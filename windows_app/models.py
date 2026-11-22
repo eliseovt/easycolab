@@ -14,6 +14,8 @@ from enum import Enum
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
+from windows_app import i18n_es
+
 
 # ─── Core i18n State & Translation Helpers (Default: Simplified Chinese "zh") ─
 
@@ -25,16 +27,20 @@ def get_lang() -> str:
 
 
 def is_en() -> bool:
-    return _CURRENT_LANG == "en"
+    return _CURRENT_LANG != "zh"
 
 
 def set_lang(lang: str) -> None:
     global _CURRENT_LANG
-    _CURRENT_LANG = "en" if str(lang).strip().lower().startswith("en") else "zh"
+    _CURRENT_LANG = i18n_es.normalize_lang(lang)
 
 
 def tr(zh: str, en: str) -> str:
-    return en if _CURRENT_LANG == "en" else zh
+    if _CURRENT_LANG == "zh":
+        return zh
+    if _CURRENT_LANG == "es":
+        return i18n_es.translate_en_to_es(en)
+    return en
 
 
 _SHARD_DESC_EXACT: Dict[str, str] = {
@@ -57,13 +63,15 @@ _SHARD_DESC_PREFIXES: List[Tuple[str, str]] = [
 def localize_shard_desc(desc: Optional[str]) -> Optional[str]:
     if desc is None or not is_en() or not desc:
         return desc
-    if desc in _SHARD_DESC_EXACT:
-        return _SHARD_DESC_EXACT[desc]
     out = desc
-    for zh_p, en_p in _SHARD_DESC_PREFIXES:
-        if out.startswith(zh_p):
-            return en_p + out[len(zh_p) :]
-    return out
+    if out in _SHARD_DESC_EXACT:
+        out = _SHARD_DESC_EXACT[out]
+    else:
+        for zh_p, en_p in _SHARD_DESC_PREFIXES:
+            if out.startswith(zh_p):
+                out = en_p + out[len(zh_p) :]
+                break
+    return i18n_es.translate_shard_desc_es(out) if _CURRENT_LANG == "es" else out
 
 
 _SERVER_EXACT_MAP: Dict[str, str] = {
@@ -221,16 +229,25 @@ _SERVER_REGEX_RULES: List[Tuple[re.Pattern[str], object]] = [
 ]
 
 
+_TS_PREFIX_RE = re.compile(r"^(\[\d{2}:\d{2}:\d{2}\]\s*)(.*)$", re.DOTALL)
+
+
 def localize_server_text(text: str) -> str:
-    """Translate common backend / bridge status strings when UI is in English mode."""
+    """Translate common backend / bridge status strings when UI is not in Chinese mode."""
     if not text or not is_en():
         return text
-    stripped = text.strip()
+    if _CURRENT_LANG == "es":
+        res = i18n_es.localize_server_text_es(text)
+        if not i18n_es.has_cjk(res):
+            return res
+    m_ts = _TS_PREFIX_RE.match(text)
+    ts_prefix = m_ts.group(1) if m_ts else ""
+    stripped = (m_ts.group(2) if m_ts else text).strip()
     if stripped in _SERVER_EXACT_MAP:
-        return _SERVER_EXACT_MAP[stripped]
+        return ts_prefix + _SERVER_EXACT_MAP[stripped]
     for pattern, repl in _SERVER_REGEX_RULES:
         if pattern.search(stripped):
-            return pattern.sub(repl, stripped)  # type: ignore[arg-type]
+            return ts_prefix + pattern.sub(repl, stripped)  # type: ignore[arg-type]
     out = stripped
     for zh_p, en_p in _SHARD_DESC_PREFIXES:
         if zh_p in out:
@@ -238,7 +255,7 @@ def localize_server_text(text: str) -> str:
     for zh_exact, en_exact in _SHARD_DESC_EXACT.items():
         if zh_exact in out:
             out = out.replace(zh_exact, en_exact)
-    return out
+    return ts_prefix + out
 
 
 # ─── Data Models & Dynamic Bilingual Catalogs ────────────────────────────────
@@ -288,7 +305,7 @@ class ModelFileItem:
     @property
     def desc(self) -> Optional[str]:
         if is_en():
-            return self._desc_en if self._desc_en else localize_shard_desc(self._desc_zh)
+            return tr(self._desc_zh or "", self._desc_en) if self._desc_en else localize_shard_desc(self._desc_zh)
         return self._desc_zh
 
     def clone(self) -> "ModelFileItem":
