@@ -12,6 +12,7 @@ import java.util.UUID
 
 enum class AppLanguage(val code: String) {
     ZH("zh"),
+    ES("es"),
     EN("en")
 }
 
@@ -19,12 +20,12 @@ object LanguageManager {
     var lang by mutableStateOf(AppLanguage.ZH)
         private set
 
-    val isEN: Boolean get() = lang == AppLanguage.EN
+    val isEN: Boolean get() = lang != AppLanguage.ZH
 
     fun init(context: Context) {
         val saved = context.getSharedPreferences("easycolab_prefs", Context.MODE_PRIVATE)
             .getString("appLanguage", "zh")
-        lang = if (saved == "en") AppLanguage.EN else AppLanguage.ZH
+        lang = LocalizationEs.fromCode(saved)
     }
 
     fun setLanguage(newLang: AppLanguage, context: Context? = null) {
@@ -34,11 +35,15 @@ object LanguageManager {
     }
 
     fun toggle(context: Context? = null) {
-        setLanguage(if (lang == AppLanguage.ZH) AppLanguage.EN else AppLanguage.ZH, context)
+        setLanguage(LocalizationEs.nextLanguage(lang), context)
     }
 }
 
-fun L(zh: String, en: String): String = if (LanguageManager.lang == AppLanguage.EN) en else zh
+fun L(zh: String, en: String): String = when (LanguageManager.lang) {
+    AppLanguage.ZH -> zh
+    AppLanguage.ES -> LocalizationEs.translateEn(en)
+    AppLanguage.EN -> en
+}
 
 fun stripEmoji(text: String): String {
     if (text.isEmpty()) return ""
@@ -48,6 +53,7 @@ fun stripEmoji(text: String): String {
         val cp = text.codePointAt(i)
         val count = Character.charCount(cp)
         val isEmoji = (cp in 0x1F300..0x1FAFF)
+            || (cp in 0x2300..0x23FF)
             || (cp in 0x2600..0x27BF)
             || cp == 0xFE0F || cp == 0x200D || cp == 0x20E3
             || (cp in 0x1F1E6..0x1F1FF)
@@ -61,6 +67,7 @@ fun stripEmoji(text: String): String {
 
 fun localizeModelFileDesc(raw: String): String {
     if (!LanguageManager.isEN || raw.isEmpty()) return raw
+    if (LanguageManager.lang == AppLanguage.ES) return LocalizationEs.localizeModelFileDesc(raw)
     return raw
         .replace(" [RAM内存盘]", " [RAM Disk]")
         .replace("DiT 音视频主干 BF16", "DiT Audio-Video Backbone BF16")
@@ -81,6 +88,10 @@ fun localizeServerText(text: String): String {
         .replace("Mac 客户端", "App 客户端")
         .replace("左侧", "算力页/上方")
     if (!LanguageManager.isEN) return adaptedZh
+    if (LanguageManager.lang == AppLanguage.ES) {
+        val es = LocalizationEs.localizeServerText(text)
+        if (!LocalizationEs.hasCjk(es)) return es
+    }
 
     val exactMap = mapOf(
         "未加载" to "Not Loaded",
@@ -525,37 +536,40 @@ data class ComfyPresetPackItem(
     val localizedTitle: String
         get() {
             if (!LanguageManager.isEN) return title
-            return when (id) {
+            val en = when (id) {
                 "wan22_i2v_flf2v" -> "Wan2.2 14B · I2V + First/Last Frame"
                 "minimax_h3_i2v_flf2v" -> "MiniMax-H3 Turbo · I2VA + Keyframes"
                 "ltx23_flf2v" -> "LTX-2.3 (22B) · Cinematic Camera + Audio"
                 "hunyuan15_i2v_1080p" -> "HunyuanVideo 1.5 · Direct 1080P Super-Res"
                 else -> localizeServerText(title)
             }
+            return if (LanguageManager.lang == AppLanguage.ES) LocalizationEs.translateEn(en) else en
         }
 
     val localizedBadge: String
         get() {
             if (!LanguageManager.isEN) return badge
-            return when (id) {
+            val en = when (id) {
                 "wan22_i2v_flf2v" -> "Beginner Pick · 4-Step"
                 "minimax_h3_i2v_flf2v" -> "Stereo Audio · 8-Step"
                 "ltx23_flf2v" -> "Camera Motion · 2 Weights"
                 "hunyuan15_i2v_1080p" -> "720P + 1080P Dual"
                 else -> localizeServerText(badge)
             }
+            return if (LanguageManager.lang == AppLanguage.ES) LocalizationEs.translateEn(en) else en
         }
 
     val localizedScenario: String
         get() {
             if (!LanguageManager.isEN) return scenario
-            return when (id) {
+            val en = when (id) {
                 "wan22_i2v_flf2v" -> "Single-Image I2V & First/Last-Frame templates (~25s on G4, 100% built-in nodes)"
                 "minimax_h3_i2v_flf2v" -> "HD dynamic video + synchronized stereo SFX, speech & music in one pass"
                 "ltx23_flf2v" -> "Optimized for sweeping camera motion between start & end keyframes with audio"
                 "hunyuan15_i2v_1080p" -> "Upload 1 image to render both 720P base video and 1920×1080 Full HD output"
                 else -> localizeServerText(scenario)
             }
+            return if (LanguageManager.lang == AppLanguage.ES) LocalizationEs.translateEn(en) else en
         }
 }
 

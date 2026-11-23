@@ -1292,20 +1292,24 @@ fun ConsoleAndSettingsTabScreen(vm: StudioViewModel) {
                         Switch(checked = vm.maskServerURL, onCheckedChange = { vm.updateMaskServerURL(it) })
                     }
 
-                    Row(
+                    Column(
                         modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceBetween,
-                        verticalAlignment = Alignment.CenterVertically
+                        verticalArrangement = Arrangement.spacedBy(6.dp)
                     ) {
                         Text(L("界面语言 (Language)", "Interface Language"), fontSize = 13.sp, fontWeight = FontWeight.Medium)
-                        Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                             FilterChip(
-                                selected = !LanguageManager.isEN,
+                                selected = LanguageManager.lang == AppLanguage.ZH,
                                 onClick = { LanguageManager.setLanguage(AppLanguage.ZH, context) },
                                 label = { Text("中文") }
                             )
                             FilterChip(
-                                selected = LanguageManager.isEN,
+                                selected = LanguageManager.lang == AppLanguage.ES,
+                                onClick = { LanguageManager.setLanguage(AppLanguage.ES, context) },
+                                label = { Text("Español") }
+                            )
+                            FilterChip(
+                                selected = LanguageManager.lang == AppLanguage.EN,
                                 onClick = { LanguageManager.setLanguage(AppLanguage.EN, context) },
                                 label = { Text("English") }
                             )

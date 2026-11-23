@@ -84,6 +84,7 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        LanguageManager.init(applicationContext)
         enableEdgeToEdge()
         consumeOAuthIntentIfPresent(intent)
 

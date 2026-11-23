@@ -49,6 +49,30 @@ Plantilla para cada cambio (el más reciente arriba):
 **Notas para fusionar con upstream:**
 -->
 
+### 2026-11-22 · Añadir idioma español a la app Android
+
+**Qué se hizo:** Se añadió el español (`"es"`, `AppLanguage.ES`) como tercer idioma en la app móvil Android (`android_app/`), con cambio cíclico `ZH → ES → EN → ZH` desde la barra superior, chip `Español` en Ajustes junto a `中文` y `English`, persistencia en `SharedPreferences` (`"easycolab_prefs"`), traducción completa de llamadas `L()`, catálogo de modelos, resoluciones, plantillas, paquetes ComfyUI, descripciones de fragmentos y mensajes del servidor/puente (`ColabNativeBridge.kt` y `app.py`), respetando prefijos `[HH:MM:SS]` y emojis iniciales como `⏳` (`U+2300–U+23FF`).
+
+**Por qué:** Permitir usar la app Android en español latinoamericano neutro con el mismo glosario que el cliente de Windows (`windows_app/i18n_es.py`), reduciendo al mínimo los conflictos al fusionar `upstream/master`.
+
+**Archivos tocados:**
+- `android_app/app/src/main/java/app/easycolab/studio/LocalizationEs.kt` (nuevo: 1255 líneas; `fromCode`, ciclo `ZH → ES → EN → ZH`, diccionario `EN_TO_ES`, 63 plantillas `EN_REGEX_TO_ES`, traducciones de fragmentos y reglas chino→español `SERVER_EXACT_ZH_TO_ES` / `SERVER_REGEX_ZH_TO_ES` con fallback al inglés)
+- `android_app/app/src/main/java/app/easycolab/studio/LocalizationAndModels.kt` (modificado, +21/-7 líneas: enum `ES("es")`, `isEN` como `lang != AppLanguage.ZH`, `LanguageManager.init/toggle`, `L()`, rango `U+2300..U+23FF` en `stripEmoji`, hooks en `localizeModelFileDesc`, `localizeServerText` y `ComfyPresetPackItem`)
+- `android_app/app/src/main/java/app/easycolab/studio/MainActivity.kt` (modificado, +1/-0 línea: llamada temprana `LanguageManager.init(applicationContext)` en `onCreate`)
+- `android_app/app/src/main/java/app/easycolab/studio/WorkspaceViews.kt` (modificado, +2/-2 líneas: etiqueta dinámica del botón de idioma mediante `nextLangButtonLabel` y `localizeServerText(vm.statusMessage)` en la barra inferior)
+- `android_app/app/src/main/java/app/easycolab/studio/StudioCloudAndSettingsViews.kt` (modificado, +10/-6 líneas: selector en Ajustes con los 3 chips `中文`, `Español` y `English`)
+
+**No se tocó:** `windows_app/`, `macos_app/`, `ios_app/`, `app.py` ni `colab_bridge.py`. Archivos locales ignorados por git creados para compilar: `android_app/local.properties`, `android_app/.signing/` y el APK en `EasyColab-Android.apk`.
+
+**Verificado:**
+- Script temporal de cobertura sobre los `.kt` de `android_app/`: `0` apariciones de `vídeo`/`Vídeo`; `239/239` llamadas literales a `L()`, `56/56` plantillas con variables y `65/65` textos del catálogo/resoluciones/modos cubiertos (`0` sin cubrir).
+- Test JVM temporal compilado con JDK 17 contra las clases release compiladas: ciclo `ZH → ES → EN → ZH`, `fromCode`, `L()`, `formatDuration`, `localizeModelFileDesc`, `stripEmoji("⏳ ...")`, fallback chino→inglés y traducción en modo `ES` de las líneas reales del servidor (reintento HTTP 503 con y sin `⏳`, liberación con tasa CU/h y `[22:24:16] [RAMDisk ...]`).
+- Compilación Release con JDK 17 (`C:\Program Files\Microsoft\jdk-17.0.21.102-hotspot`) vía `.\gradlew.bat assembleRelease` (`BUILD SUCCESSFUL`) y copia a `EasyColab-Android.apk` (2 827 544 bytes).
+
+**Notas para fusionar con upstream:**
+- Si el autor añade nuevas cadenas en `L(zh, en)` sin actualizar `LocalizationEs.kt`, `L()` y `localizeServerText()` hacen fallback automático al inglés y nunca muestran texto vacío ni dejan el mensaje en chino si existe regla inglesa.
+- En caso de conflicto en `LocalizationAndModels.kt`, `WorkspaceViews.kt` o `StudioCloudAndSettingsViews.kt`, basta conservar el enum `ES("es")`, `isEN = lang != AppLanguage.ZH`, las llamadas puntuales a `LocalizationEs.*` y el tercer `FilterChip`.
+
 ### 2026-11-22 · Añadir idioma español al cliente de Windows
 
 **Qué se hizo:** Se añadió el español (`"es"`) como tercer idioma seleccionable en el cliente de escritorio para Windows, con cambio cíclico `中文 → ES → EN → 中文` desde la barra superior y desde la guía inicial, persistencia en `settings.json`, traducción de la interfaz (`tr()`), etiquetas dinámicas, mensajes de `colab_bridge.py` / `app.py` y líneas del panel «Run Logs» (respetando `[HH:MM:SS]`).

@@ -246,7 +246,7 @@ fun CreateTabScreen(vm: StudioViewModel) {
                 )
             ) {
                 Text(
-                    text = vm.statusMessage,
+                    text = localizeServerText(vm.statusMessage),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     modifier = Modifier.padding(horizontal = 12.dp, vertical = 10.dp)
@@ -342,7 +342,7 @@ private fun CreateTopHeaderBar(
             modifier = Modifier.clickable { onToggleLanguage() }
         ) {
             Text(
-                text = if (LanguageManager.isEN) "中文" else "EN",
+                text = LocalizationEs.nextLangButtonLabel(LanguageManager.lang),
                 fontSize = 11.sp,
                 fontWeight = FontWeight.Bold,
                 maxLines = 1,
