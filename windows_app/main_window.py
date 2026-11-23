@@ -1205,7 +1205,7 @@ class EasyColabMainWindow(WorkspaceMixin, QMainWindow):
 
     def _set_batch_count(self, cnt: int) -> None:
         self.vm.batch_count = cnt
-        self._refresh_batch_buttons()
+        self._refresh_all_state()
 
     def _on_thinking_toggled(self, checked: bool) -> None:
         if self._syncing_ui:
