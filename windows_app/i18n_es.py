@@ -1632,7 +1632,47 @@ def _translate_stage_label(lbl: str) -> str:
     return mapping.get(lbl, lbl)
 
 
+# Live text progress bars that app.py writes into ACTIVE_TQDM_BARS["sampling"], e.g.
+# "DiT 去噪采样:  98%|##########| 49/50 [00:18<00:00, 0.36s/step] · 总进度 88%".
+_BAR_LABELS_ZH_TO_ES = {
+    "DiT 去噪采样": "Muestreo DiT",
+    "提示词编码": "Codificación de prompt",
+    "音视频封装": "Empaquetado MP4",
+    "MiniMax-H3-Image 采样": "Muestreo MiniMax-H3-Image",
+    "高清图像 VAE 解码": "Decodificación VAE de imagen HD",
+    "3D 视频 VAE 解码": "Decodificación VAE de video 3D",
+    "3D 视频与音频 VAE 解码": "Decodificación VAE de video 3D y audio",
+    "32kHz 立体声解码": "Decodificación estéreo 32kHz",
+}
+
+_BAR_TAIL_RULES_ZH_TO_ES: List[Tuple[re.Pattern[str], str]] = [
+    (re.compile(r"^(\d+/\d+) \[(\S+)<(\S+), ([\d.]+)s/step\] · 总进度 (\d+)%$"), r"\1 [\2<\3, \4s/paso] · total \5%"),
+    (re.compile(r"^(\d+/\d+) \[正在执行第 (\d+/\d+) 步\.\.\.\]$"), r"\1 [ejecutando paso \2...]"),
+    (
+        re.compile(r"^DiT 采样已完成 \((\d+/\d+)，耗时 (\S+)\) -> 正在解码输出\.\.\.$"),
+        r"muestreo DiT completado (\1, \2) -> decodificando la salida...",
+    ),
+    (re.compile(r"^正在解析画面、运镜与声音提示词\.\.\.$"), "analizando prompts de imagen, cámara y sonido..."),
+    (re.compile(r"^正在将潜空间张量解码为高清像素\.\.\.$"), "decodificando el espacio latente a píxeles HD..."),
+    (re.compile(r"^正在解码双声道环境音与配乐波形\.\.\.$"), "decodificando ambiente y música en estéreo..."),
+    (re.compile(r"^正在编码 H\.264 视频与 32kHz 立体声 MP4\.\.\.$"), "codificando MP4 con video H.264 y audio estéreo 32kHz..."),
+    (re.compile(r"^(\d+) 步 PDD 蒸馏推理中 \((.+?)\)\.\.\.$"), r"inferencia destilada PDD en \1 pasos (\2)..."),
+]
+
+
+def _translate_progress_bar(m: "re.Match[str]") -> str:
+    label = _BAR_LABELS_ZH_TO_ES.get(m.group(1).strip(), m.group(1))
+    tail = m.group(4)
+    for pattern, repl in _BAR_TAIL_RULES_ZH_TO_ES:
+        if pattern.search(tail):
+            tail = pattern.sub(repl, tail)
+            break
+    return f"{label}: {m.group(2)}%|{m.group(3)}| {tail}"
+
+
 SERVER_REGEX_ZH_TO_ES: List[Tuple[re.Pattern[str], Any]] = [
+    # app.py live progress bars ("<label>: NN%|####------| <detail>")
+    (re.compile(r"^([^:|]*[一-鿿][^:|]*):\s*(\d+)%\|([^|]*)\|\s*(.*)$"), _translate_progress_bar),
     # colab_bridge.py wake & stop messages
     (
         re.compile(r"^尚未授权登录 Google 账号，请先点击「\s*绑定账号」$"),

@@ -776,7 +776,56 @@ object LocalizationEs {
         "已自动切换至内置专属引擎「MiniMax-H3-Image (33B · 4K)」（仅下载 Diffusers 必需 27 个分片，并自动零拷贝共享 MiniMax-H3 的 66.7GB 编码器权重）！" to "¡Cambiado al motor integrado 'MiniMax-H3-Image (33B · 4K)' (solo baja los 27 fragmentos de Diffusers y comparte sin copia los 66.7GB del codificador de MiniMax-H3)!"
     )
 
+    // Barras de progreso en vivo de app.py (ACTIVE_TQDM_BARS["sampling"]), p. ej.
+    // "DiT 去噪采样:  98%|##########| 49/50 [00:18<00:00, 0.36s/step] · 总进度 88%".
+    private val BAR_LABELS_ZH_TO_ES: Map<String, String> = mapOf(
+        "DiT 去噪采样" to "Muestreo DiT",
+        "提示词编码" to "Codificación de prompt",
+        "音视频封装" to "Empaquetado MP4",
+        "MiniMax-H3-Image 采样" to "Muestreo MiniMax-H3-Image",
+        "高清图像 VAE 解码" to "Decodificación VAE de imagen HD",
+        "3D 视频 VAE 解码" to "Decodificación VAE de video 3D",
+        "3D 视频与音频 VAE 解码" to "Decodificación VAE de video 3D y audio",
+        "32kHz 立体声解码" to "Decodificación estéreo 32kHz"
+    )
+
+    private val BAR_TAIL_RULES_ZH_TO_ES: List<Pair<Regex, (MatchResult) -> String>> = listOf(
+        Regex("""^(\d+/\d+) \[(\S+)<(\S+), ([\d.]+)s/step\] · 总进度 (\d+)%$""") to { m ->
+            val g = m.groupValues
+            "${g[1]} [${g[2]}<${g[3]}, ${g[4]}s/paso] · total ${g[5]}%"
+        },
+        Regex("""^(\d+/\d+) \[正在执行第 (\d+/\d+) 步\.\.\.\]$""") to { m ->
+            "${m.groupValues[1]} [ejecutando paso ${m.groupValues[2]}...]"
+        },
+        Regex("""^DiT 采样已完成 \((\d+/\d+)，耗时 (\S+)\) -> 正在解码输出\.\.\.$""") to { m ->
+            "muestreo DiT completado (${m.groupValues[1]}, ${m.groupValues[2]}) -> decodificando la salida..."
+        },
+        Regex("""^正在解析画面、运镜与声音提示词\.\.\.$""") to { _ -> "analizando prompts de imagen, cámara y sonido..." },
+        Regex("""^正在将潜空间张量解码为高清像素\.\.\.$""") to { _ -> "decodificando el espacio latente a píxeles HD..." },
+        Regex("""^正在解码双声道环境音与配乐波形\.\.\.$""") to { _ -> "decodificando ambiente y música en estéreo..." },
+        Regex("""^正在编码 H\.264 视频与 32kHz 立体声 MP4\.\.\.$""") to { _ -> "codificando MP4 con video H.264 y audio estéreo 32kHz..." },
+        Regex("""^(\d+) 步 PDD 蒸馏推理中 \((.+?)\)\.\.\.$""") to { m ->
+            "inferencia destilada PDD en ${m.groupValues[1]} pasos (${m.groupValues[2]})..."
+        }
+    )
+
+    private fun translateProgressBar(m: MatchResult): String {
+        val g = m.groupValues
+        val label = BAR_LABELS_ZH_TO_ES[g[1].trim()] ?: g[1]
+        var tail = g[4]
+        for ((pattern, repl) in BAR_TAIL_RULES_ZH_TO_ES) {
+            val tm = pattern.matchEntire(tail)
+            if (tm != null) {
+                tail = repl(tm)
+                break
+            }
+        }
+        return "$label: ${g[2]}%|${g[3]}| $tail"
+    }
+
     private val SERVER_REGEX_ZH_TO_ES: List<Pair<Regex, (MatchResult) -> String>> = listOf(
+        // Barras de progreso en vivo de app.py ("<etiqueta>: NN%|####------| <detalle>")
+        Regex("""^([^:|]*[一-鿿][^:|]*):\s*(\d+)%\|([^|]*)\|\s*(.*)$""") to { m -> translateProgressBar(m) },
         // Puente / Wake & Stop
         Regex("""^尚未授权登录 Google 账号，请先点击「\s*绑定账号」$""") to {
             "Cuenta de Google sin autorizar. Toca primero 'Vincular Google'."

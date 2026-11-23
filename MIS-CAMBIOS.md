@@ -49,6 +49,37 @@ Plantilla para cada cambio (el más reciente arriba):
 **Notas para fusionar con upstream:**
 -->
 
+### 2026-11-23 · Traducir la barra de progreso en vivo (Windows y Android)
+
+**Qué se hizo:** nueva regla que traduce al español las barras de progreso que `app.py` escribe en
+chino en «Registros», por ejemplo
+`DiT 去噪采样:  98%|##########| 49/50 [00:18<00:00, 0.36s/step] · 总进度 88%` →
+`Muestreo DiT: 98%|##########| 49/50 [00:18<00:00, 0.36s/paso] · total 88%`.
+Cubre las 8 variantes de `ACTIVE_TQDM_BARS["sampling"]`: muestreo DiT, codificación de prompt,
+decodificación VAE de imagen/video/audio, empaquetado MP4 y MiniMax-H3-Image.
+**Por qué:** era la única línea del registro que seguía en chino al generar una imagen.
+**Archivos tocados:**
+- `windows_app/i18n_es.py` (propio: `_BAR_LABELS_ZH_TO_ES`, `_BAR_TAIL_RULES_ZH_TO_ES`, `_translate_progress_bar` y la primera regla de `SERVER_REGEX_ZH_TO_ES`)
+- `android_app/app/src/main/java/app/easycolab/studio/LocalizationEs.kt` (propio: lo mismo en Kotlin)
+
+**Verificado:** las 8 variantes salen sin chino en Windows (Python) y en Android (clases Kotlin
+compiladas, ejecutadas en la JVM). En inglés y chino no cambia nada. APK recompilado.
+**Notas para fusionar con upstream:** solo archivos propios. Si el autor cambia el formato de esas
+barras en `app.py`, ajustar las reglas.
+
+### 2026-11-23 · Corregir el texto del botón «Generar» al cambiar la cantidad por lote
+
+**Qué se hizo:** al elegir 1x/2x/3x/4x en «Cantidad por lote», ahora se refresca toda la vista
+(`_refresh_all_state()`) en lugar de solo los botones de cantidad.
+**Por qué:** fallo del autor. El botón grande seguía mostrando la cantidad anterior (p. ej.
+«Generar 2x imágenes HD» con 1x seleccionado), aunque se generaba la cantidad correcta.
+**Archivos tocados:**
+- `windows_app/main_window.py` (modificado: 1 línea en `_set_batch_count`)
+
+**Verificado:** con la ventana fuera de pantalla, en español, inglés y chino, con Qwen-Image-2.1 y
+MiniMax-H3, el texto cambia al instante (1x → «Generar imagen», 2x → «Generar 2x imágenes HD», etc.).
+**Notas para fusionar con upstream:** si el autor lo corrige por su cuenta, quédate con su versión.
+
 ### 2026-11-22 · Añadir idioma español a la app Android
 
 **Qué se hizo:** Se añadió el español (`"es"`, `AppLanguage.ES`) como tercer idioma en la app móvil Android (`android_app/`), con cambio cíclico `ZH → ES → EN → ZH` desde la barra superior, chip `Español` en Ajustes junto a `中文` y `English`, persistencia en `SharedPreferences` (`"easycolab_prefs"`), traducción completa de llamadas `L()`, catálogo de modelos, resoluciones, plantillas, paquetes ComfyUI, descripciones de fragmentos y mensajes del servidor/puente (`ColabNativeBridge.kt` y `app.py`), respetando prefijos `[HH:MM:SS]` y emojis iniciales como `⏳` (`U+2300–U+23FF`).
